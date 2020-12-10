@@ -70,6 +70,10 @@ local function ListTrashLoot()
 	print("---------------")
 end
 
+local function LoadLootData()
+	LootData = ImportedData	
+end
+
 -- Loot Config
 
 SLASH_RRINCLOOTCFG1 = '/lootconfig'
@@ -93,6 +97,9 @@ function SlashCmdList.RRINCLOOTCFG(msg)
 		ListTrashLoot()
 	end
 
+	if(option=="lootdata") then
+		LoadLootData()
+	end
 end
 
 local function EventEnterWorld(self, event, isLogin, isReload)
