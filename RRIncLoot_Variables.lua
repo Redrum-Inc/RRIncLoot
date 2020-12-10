@@ -72,7 +72,8 @@ end
 
 local function LoadLootData()
 	LootData = ImportedData		
-	print("RRIncLoot: Loaded data from import.")
+	LootDataTimestamp = ImportedDataTimestamp
+	print("RRIncLoot: Loaded data from import with timestamp == "..LootDataTimestamp)
 end
 
 -- Loot Config
@@ -111,7 +112,12 @@ local function EventEnterWorld(self, event, isLogin, isReload)
 	RRIncLoot_Settings.whispers = RRIncLoot_Settings.whispers or true
 
 	if isLogin then
-		C_Timer.After(1, function() print("RRIncLoot loaded. Roll countdown: "..CountdownMax..", Autoloot: "..tostring(RRIncLoot_Settings.autoloot)..", Trash assignee: "..RRIncLoot_Settings.trashAssignee) end)
+		C_Timer.After(1, function() print("RRIncLoot loaded. Roll countdown: "..CountdownMax..", Autoloot: "..tostring(RRIncLoot_Settings.autoloot)..", Trash assignee: "..RRIncLoot_Settings.trashAssignee) end)		
+	end
+
+	if LootDataTimestamp ~= ImportedDataTimestamp then
+			C_Timer.After(3, function() print("RRIncLoot: LootData timestamp \""..LootDataTimestamp.."\" differs from imported timestamp \""..ImportedDataTimestamp.."\"!") end)
+			C_Timer.After(4, function() print("RRIncLoot: Run command \"/lcfg lootdata\" to re-load imported values.") end)
 	end
 end
 
