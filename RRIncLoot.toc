@@ -1,7 +1,7 @@
 ## Interface: 11306
 ## Version: 3
 ## Title: RR Inc Loot
-## Notes: Addon for RR Inc on EU-ZandalarTribe. Data valid for 2020-12-07. By |cFF6600CCPug|r.
+## Notes: Addon for RR Inc on EU-ZandalarTribe. Data valid for 2020-12-10. By |cFF6600CCPug|r.
 ## Author: |cFF6600CCPug|r
 ## DefaultState: enabled
 ## SavedVariables: CountdownMax, LootHistory, RRIncLoot_Settings, LootData, LootDataTimestamp

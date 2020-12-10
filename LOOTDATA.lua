@@ -1,17 +1,17 @@
 ImportedData = {}
-ImportedDataTimestamp = "2020-12-10 20:58:52"
+ImportedDataTimestamp = "2020-12-10 21:50:08"
 
 ImportedData['Anubisath Warhammer']={{name="Nothagnus", ranking=53},{name="Yallfolx", ranking=45}}
 ImportedData['Garb of Royal Ascension']={{name="Adamnnan", ranking=40},{name="Immo", ranking=34}}
 ImportedData['Ritssyn\'s Ring of Chaos']={{name="Jolina", ranking=54},{name="Drstomplol", ranking=47},{name="Greenglare", ranking=47}}
 ImportedData['Shard of the Fallen Star']={{name="Uggie", ranking=33}}
-ImportedData['Imperial Qiraji Armaments']={{name="Evilrift", ranking=58},{name="Pug", ranking=49},{name="Evilrift", ranking=47}}
-ImportedData['Imperial Qiraji Regalia']={{name="Pug", ranking=52},{name="Evilrift", ranking=52},{name="Evilrift", ranking=46},{name="Pug", ranking=41}}
+ImportedData['Imperial Qiraji Armaments']={{name="Exeles", ranking=58},{name="Yallfolx", ranking=49},{name="Cakey", ranking=47}}
+ImportedData['Imperial Qiraji Regalia']={{name="Greenglare", ranking=52},{name="Pug", ranking=48},{name="Adamnnan", ranking=46},{name="Immo", ranking=41}}
 ImportedData['Qiraji Bindings of Command']={{name="Veriia", ranking=61},{name="Veriia", ranking=50},{name="Uggie", ranking=39},{name="Placeholder", ranking=26},{name="Placeholder", ranking=26}}
 ImportedData['Qiraji Bindings of Dominance']={{name="Placeholder", ranking=25},{name="Placeholder", ranking=25}}
 ImportedData['Amulet of Foul Warding']={{name="Yallfolx", ranking=48}}
-ImportedData['Breastplate of Annihilation']={{name="Pug", ranking=43},{name="Zamina", ranking=43}, {name="Pug", ranking=41}, {name="Zamina", ranking=39}}
-ImportedData['Cloak of Concentrated Hatred']={{name="Zamina", ranking=59}, {name="Pug", ranking=55}, {name="Zamina", ranking=51}, {name="Pug", ranking=51}}
+ImportedData['Breastplate of Annihilation']={{name="Crit", ranking=43}}
+ImportedData['Cloak of Concentrated Hatred']={{name="Sicillian", ranking=58},{name="Warlion", ranking=57},{name="Nothagnus", ranking=53},{name="Teikoku", ranking=53},{name="Galedia", ranking=51}}
 ImportedData['Ring of Swarming Thought']={{name="Laorra", ranking=44},{name="Adamnnan", ranking=40},{name="Jolina", ranking=38}}
 ImportedData['Staff of the Qiraji Prophets']={{name="Jolina", ranking=47}}
 ImportedData['Cape of the Trinity']={{name="Magnor", ranking=45}}
