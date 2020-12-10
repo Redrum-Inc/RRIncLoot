@@ -1,5 +1,5 @@
 # RRIncLoot
-Addon to help with loot management.
+Addon to help RR Inc with loot management.
 
 ## Commands
 
