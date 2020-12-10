@@ -71,7 +71,8 @@ local function ListTrashLoot()
 end
 
 local function LoadLootData()
-	LootData = ImportedData	
+	LootData = ImportedData		
+	print("RRIncLoot: Loaded data from import.")
 end
 
 -- Loot Config

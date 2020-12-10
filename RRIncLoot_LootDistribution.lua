@@ -44,27 +44,71 @@ local function ResetLootDistribution()
 	}
 end
 
+local function GetRankingString(array)
+	local firstRank = true
+	local text = ""
+	for i=1, #array do
+		if firstRank then
+			text = array[i].name.." "..array[i].ranking
+			firstRank = false			
+		else
+			text = text..", "..array[i].name.." "..array[i].ranking			
+		end		
+	end	
+	return text 
+end
+
+local function RemoveLocalRanking(item, name, rank)
+	local itemName = select(1, GetItemInfo(item))
+	local targetIndex = 0
+
+	for i=1, #LootData[itemName] do
+		print(LootData[itemName][i].name, LootData[itemName][i].ranking, " | ", name, rank)
+		if LootData[itemName][i].name == name and LootData[itemName][i].ranking == rank then
+			targetIndex = i
+			
+		end
+	end	
+
+	if targetIndex > 0 then
+		table.remove(LootData[itemName], targetIndex) 
+		print("RRIncLoot: Removed "..name.." with rank "..rank.." from local loot data.")
+	else
+		print("RRIncLoot: RemoveLocalRanking cannot find target index!")
+	end
+end
+
 local function SetupLootDistribution(item)
 	-- Start processing linked item.
 	LootDistribution.item = item
 	local itemName = select(1, GetItemInfo(item))
 
 	if LootData[itemName] == nil then
-		RRIncLoot_StartFFARoll(item, true)		
+		print("TRIGGERED!")
+		RRIncLoot_StartFFARoll(item, true)
+		return false	
+	end
+
+	if next(LootData[itemName]) == nil then
+		print("TRIGGERED 2!")
+		RRIncLoot_StartFFARoll(item, true)
 		return false
 	end
 
-	LootDistribution.ranking = string.gsub(LootData[itemName],",",", ")
+	LootDistribution.ranking = GetRankingString(LootData[itemName])
+
+	print(LootDistribution.ranking)
 
 	-- -- Output info about item. TODO: Make this raid message.
 	-- print("Item:", LootDistribution.item)
 	-- print("Loot ranking:", LootDistribution.ranking)
 	
 	-- Split ranking into array and loop through, adding each to correct level as we go.
-	local RankingArray = {strsplit(",", LootData[itemName]:gsub(" ",""))}
+	local RankingArray = LootData[itemName]
 	for i = 1, #RankingArray do
 		
-		local name, level = strsplit(":",RankingArray[i])		
+		local name = RankingArray[i].name
+		local level = RankingArray[i].ranking
 		local levelObject = {
 			name=name, 
 			rolled=0, 
@@ -97,14 +141,14 @@ local function SetupLootDistribution(item)
 	end
 
 	-- Debug printing to check data.
-	-- for i = 1, #LootDistribution.levels do 
-	-- 	d(LootDistribution.levels[i].level..":")
-	-- 	for j = 1, #LootDistribution.levels[i].players do 
-	-- 		local player = LootDistribution.levels[i].players[j]
-	-- 		d(player.name, player.rolled, player.accepted, player.passed)
-	-- 	end
-	-- 	d("--------")
-	-- end
+	for i = 1, #LootDistribution.levels do 
+		d(LootDistribution.levels[i].level..":")
+		for j = 1, #LootDistribution.levels[i].players do 
+			local player = LootDistribution.levels[i].players[j]
+			d(player.name, player.rolled, player.accepted, player.passed)
+		end
+		d("--------")
+	end
 
 	return true
 end
@@ -279,6 +323,7 @@ local function EvaluateResponses()
 				SendChatMessage("Gz "..players[i].name.."!","RAID_WARNING","COMMON")
 				RRIncLoot_AddLootHistory(players[i].name, positiveHistoryText, LootDistribution.item)
 				RRIncLoot_LockVar = false;
+				RemoveLocalRanking(LootDistribution.item, players[i].name, LootDistribution.levels[LootDistribution.levelIndex].level)
 			end
 		end
 	elseif(acceptedCount < 1) then
@@ -391,6 +436,7 @@ local function EvaluateRolls()
 				SendChatMessage("Gz "..players[i].name.."!","RAID_WARNING","COMMON")
 				RRIncLoot_AddLootHistory(players[i].name, positiveHistoryText, LootDistribution.item)
 				RRIncLoot_LockVar = false
+				RemoveLocalRanking(LootDistribution.item, players[i].name, LootDistribution.levels[LootDistribution.levelIndex].level)
 			end
 		end
 	end
