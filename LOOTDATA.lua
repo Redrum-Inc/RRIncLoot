@@ -10,8 +10,8 @@ ImportedData['Imperial Qiraji Regalia']={{name="Pug", ranking=52},{name="Evilrif
 ImportedData['Qiraji Bindings of Command']={{name="Veriia", ranking=61},{name="Veriia", ranking=50},{name="Uggie", ranking=39},{name="Placeholder", ranking=26},{name="Placeholder", ranking=26}}
 ImportedData['Qiraji Bindings of Dominance']={{name="Placeholder", ranking=25},{name="Placeholder", ranking=25}}
 ImportedData['Amulet of Foul Warding']={{name="Yallfolx", ranking=48}}
-ImportedData['Breastplate of Annihilation']={{name="Crit", ranking=43}}
-ImportedData['Cloak of Concentrated Hatred']={{name="Sicillian", ranking=58},{name="Warlion", ranking=57},{name="Nothagnus", ranking=53},{name="Teikoku", ranking=53},{name="Galedia", ranking=51}}
+ImportedData['Breastplate of Annihilation']={{name="Pug", ranking=43},{name="Zamina", ranking=43}, {name="Pug", ranking=41}, {name="Zamina", ranking=39}}
+ImportedData['Cloak of Concentrated Hatred']={{name="Zamina", ranking=59}, {name="Pug", ranking=55}, {name="Zamina", ranking=51}, {name="Pug", ranking=51}}
 ImportedData['Ring of Swarming Thought']={{name="Laorra", ranking=44},{name="Adamnnan", ranking=40},{name="Jolina", ranking=38}}
 ImportedData['Staff of the Qiraji Prophets']={{name="Jolina", ranking=47}}
 ImportedData['Cape of the Trinity']={{name="Magnor", ranking=45}}
