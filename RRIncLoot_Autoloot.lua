@@ -30,7 +30,7 @@ FrameAutoloot:SetScript("OnEvent", function(self, event, ...)
 	end	
 	
 	local AmountOfLoot = GetNumLootItems()
-	print("Num loot:", AmountOfLoot)		
+	-- print("Num loot:", AmountOfLoot)		
 
 	for i=1, AmountOfLoot, 1 do
 		local lootIcon, lootName, lootQuantity, rarity, locked, isQuestItem, questId, isActive = GetLootSlotInfo(i)
