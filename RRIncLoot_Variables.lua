@@ -95,7 +95,7 @@ local function EventEnterWorld(self, event, isLogin, isReload)
 	RRIncLoot_Settings.whispers = RRIncLoot_Settings.whispers or true
 
 	if isLogin then
-		C_Timer.After(1, function() print("RRIncLoot loaded. Roll countdown: "..CountdownMax..", Autoloot: "..tostring(RRIncLoot_Settings.autoloot)..", Trash assignee: "..RRIncLoot_Settings.trashAssignee) end)		
+		C_Timer.After(1, function() print("RRIncLoot loaded. Roll countdown: "..RRIncLoot_Settings.countdownMax..", Autoloot: "..tostring(RRIncLoot_Settings.autoloot)..", Trash assignee: "..RRIncLoot_Settings.trashAssignee) end)	
 	end
 
 	if LootDataTimestamp ~= ImportedDataTimestamp then
