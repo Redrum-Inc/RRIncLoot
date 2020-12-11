@@ -1,6 +1,5 @@
 AutolootData = {
-    Items = {
-        
+    Items = {        
         { -- Common items
             "Linen Cloth",
             "Runecloth",
@@ -48,11 +47,11 @@ AutolootData = {
             "Ragged Leather Boots",
             "Flimsy Chain Bracers",
             "Worn Hide Cloak"
+        },
+        { -- Test Northsire Valley, wolves
+            "Broken Fang",
+            "Ruined Pelt"
         }
     }
-    -- Test = 
-    -- BWL = 
-    -- AQ = ,
-    -- Naxx = 
 }
 

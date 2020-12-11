@@ -8,31 +8,44 @@
 local FrameAutoloot = CreateFrame("Frame")
 FrameAutoloot:RegisterEvent("LOOT_OPENED")
 FrameAutoloot:SetScript("OnEvent", function(self, event, ...)
-	-- print("LOOT EVENT YAY")
-	if(RRIncLoot_Settings.autoloot) then
-		local AmountOfLoot = GetNumLootItems()
-		-- print("Num loot:", AmountOfLoot)
+	
+	if not RRIncLoot_Settings.autoloot then
+		print("Autoloot disabled.")
+		return
+	end
 
+	local masterlooterRaidID = select(3, GetLootMethod())
+	if masterlooterRaidID == nil then
+		-- masterlooterRaidID - Returns index of the master looter in the raid (corresponding to a raidX unit), or nil if the player is not in a raid or master looting is not used.
+		return
+	else 
+		local rosterName = select(1, GetRaidRosterInfo(masterlooterRaidID)) 
+		local playerName = select(1, UnitName("player"))
+		if rosterName ~= playerName then
+			print("RRIncLoot: You are not the masterlooter, disabling autoloot.")
+			RRIncLoot_ToggleAutoloot()
+			return
+		end
+	end	
+	
+	local AmountOfLoot = GetNumLootItems()
+	-- print("Num loot:", AmountOfLoot)		
+
+	for i=1, AmountOfLoot, 1 do
+		local lootIcon, lootName, lootQuantity, rarity, locked, isQuestItem, questId, isActive = GetLootSlotInfo(i)
+		local itemLink = GetLootSlotLink(i)
 		
-
-		for i=1, AmountOfLoot, 1 do
-			-- local lootName = select(2,GetLootSlotInfo(i))
-			-- local rarity = select(4,GetLootSlotInfo(i))
-			local lootIcon, lootName, lootQuantity, rarity, locked, isQuestItem, questId, isActive = GetLootSlotInfo(i)
-			local itemLink = GetLootSlotLink(i)
+		if RRIncLoot_LootCanBeAutolooted(lootName) then
+			local members = GetNumGroupMembers()
 			
-			if RRIncLoot_LootCanBeAutolooted(lootName) then
-				-- print("Trash detected: ",lootName)
-				local members = GetNumGroupMembers()
-				-- print(members)
-				for j=1, members, 1 do				
-					local candidate = GetMasterLootCandidate(i, j);
-					if(candidate == RRIncLoot_Settings.trashAssignee) then
-						print("RRIncLoot: Trash detected, giving "..itemLink.." to "..candidate..".")
-						GiveMasterLoot(i, j);
-					end
+			for j=1, members, 1 do				
+				local candidate = GetMasterLootCandidate(i, j);
+				if(candidate == RRIncLoot_Settings.trashAssignee) then
+					print("RRIncLoot: Trash detected, giving "..itemLink.." to "..candidate..".")
+					GiveMasterLoot(i, j);
 				end
 			end
 		end
 	end
+	
 end)

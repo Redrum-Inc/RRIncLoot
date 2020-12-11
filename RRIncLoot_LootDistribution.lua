@@ -84,13 +84,11 @@ local function SetupLootDistribution(item)
 	local itemName = select(1, GetItemInfo(item))
 
 	if LootData[itemName] == nil then
-		print("TRIGGERED!")
 		RRIncLoot_StartFFARoll(item, true)
 		return false	
 	end
 
 	if next(LootData[itemName]) == nil then
-		print("TRIGGERED 2!")
 		RRIncLoot_StartFFARoll(item, true)
 		return false
 	end
@@ -468,13 +466,18 @@ end)
 SLASH_RRINCLOOT1 = '/l'
 SLASH_RRINCLOOT2 = '/loot'
 function SlashCmdList.RRINCLOOT(item)
+	if not RRIncLoot_PlayerIsMasterlooter() then
+		print("RRIncLoot: You need to be the masterlooter.")
+		return
+	end
+
 	if(RRIncLoot_LockVar) then
-		print("Distribution or roll in progress, finish before starting a new one!")
+		print("RRIncLoot: Distribution or roll in progress, finish before starting a new one!")
 		return
 	end
 
 	if(item == nil or item == "") then		
-		print("Syntax: /l [ItemLink]")
+		print("RRIncLoot: Missing item, try /l [ItemLink]")
 		return
 	end
 
@@ -487,8 +490,8 @@ function SlashCmdList.RRINCLOOT(item)
 	end
 end
 
-SLASH_RRINCTEST1 = '/t'
-SLASH_RRINCTEST2 = '/test'
-function SlashCmdList.RRINCTEST(item)
-	-- print("'"..LootDistribution.item.."'")
-end
+-- SLASH_RRINCTEST1 = '/t'
+-- SLASH_RRINCTEST2 = '/test'
+-- function SlashCmdList.RRINCTEST(item)
+-- 	-- print("'"..LootDistribution.item.."'")
+-- end

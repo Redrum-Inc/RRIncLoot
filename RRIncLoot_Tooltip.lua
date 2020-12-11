@@ -49,18 +49,16 @@ local function SetGameToolTipPrice(tt)
 				return 
 			end
 			
-			local lootorder = FormatTooltipText(LootData[itemName])
-			tt:AddDoubleLine("\nLoot order:")
-			tt:AddDoubleLine(lootorder)			
-			tt:AddDoubleLine("")			
+			local lootranking = FormatTooltipText(LootData[itemName])
+			tt:AddDoubleLine("Loot ranking:")
+			tt:AddDoubleLine(lootranking)			
 		else 
 			-- tt:AddDoubleLine("Loot order:\nFFA")
 			--nothing?
 		end 
 		
-		if RRIncLoot_LootIsTrash(itemName) then
-			tt:AddDoubleLine("RRIncLoot: Autoloot available.")
-			
+		if RRIncLoot_LootCanBeAutolooted(itemName) then
+			tt:AddDoubleLine("RRIncLoot: Autoloot available.")			
 		end
 
 	end
