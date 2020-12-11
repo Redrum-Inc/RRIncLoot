@@ -1,7 +1,7 @@
 function RRIncLoot_LootCanBeAutolooted(item)
-	for i=1, #TrashData.Items do
-		for j=0, #TrashData.Items[i] do
-			if(item == TrashData.Items[i][j]) then
+	for i=1, #AutolootData.Items do
+		for j=0, #AutolootData.Items[i] do			
+			if(item == AutolootData.Items[i][j]) then			
 				return true
 			end
 		end		
