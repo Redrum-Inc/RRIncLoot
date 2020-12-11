@@ -6,8 +6,8 @@
 ## DefaultState: enabled
 ## SavedVariables: CountdownMax, LootHistory, RRIncLoot_Settings, LootData, LootDataTimestamp
 
-LOOTDATA.lua
-TRASHDATA.lua
+IMPORTDATA.lua
+AUTOLOOTDATA.lua
 RRIncLoot_Variables.lua
 RRIncLoot_Shared.lua
 RRIncLoot_History.lua

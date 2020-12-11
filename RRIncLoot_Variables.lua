@@ -61,10 +61,10 @@ end
 
 local function ListTrashLoot()
 	print("RRIncLoot: Trash list:")
-	for i=1, #TrashData do
+	for i=1, #AutolootData do
 		print(i)
-		for j=1, #TrashData[i] do
-			print(TrashData[i][j])
+		for j=1, #AutolootData[i] do
+			print(AutolootData[i][j])
 		end
 	end
 	print("---------------")

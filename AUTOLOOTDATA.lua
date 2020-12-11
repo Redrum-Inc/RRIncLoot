@@ -1,4 +1,4 @@
-TrashData = {
+AutolootData = {
     Items = {
         
         { -- Common items
