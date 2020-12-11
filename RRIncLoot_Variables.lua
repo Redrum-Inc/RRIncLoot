@@ -1,22 +1,4 @@
--- Event for looting, check how to parse available loot next.
--- local MyTestFrame = CreateFrame("Frame")
--- MyTestFrame:RegisterEvent("LOOT_OPENED")
--- MyTestFrame:SetScript("OnEvent", function(self, event, ...)
--- 	print("LOOT EVENT YAY")
--- end)
 
--- Auto assigning loot to winners:
--- https://wowwiki.fandom.com/wiki/API_GiveMasterLoot
--- https://wowwiki.fandom.com/wiki/API_GetNumLootItems
--- https://wowwiki.fandom.com/wiki/API_GetMasterLootCandidate
--- https://wowwiki.fandom.com/wiki/World_of_Warcraft_API#Loot
-
--- Saved variables saving/loading:
--- https://www.wowinterface.com/forums/showthread.php?p=261244
-
-
-
--- Variables
 RRIncLoot_Settings = {
 	-- whispers = true,
 	-- autoloot = true,
@@ -24,7 +6,7 @@ RRIncLoot_Settings = {
 	-- countdownMax = 10
 }
 
--- Lock variable to not allow multiple distributions/rolls.
+-- Lock variable to prevent multiple distributions/rolls.
 RRIncLoot_LockVar = false
 
 negativeHistoryText = "lost or passed"

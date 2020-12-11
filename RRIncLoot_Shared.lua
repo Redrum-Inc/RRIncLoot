@@ -1,4 +1,4 @@
-function RRIncLoot_LootIsTrash(item)
+function RRIncLoot_LootCanBeAutolooted(item)
 	for i=1, #TrashData.Items do
 		for j=0, #TrashData.Items[i] do
 			if(item == TrashData.Items[i][j]) then
