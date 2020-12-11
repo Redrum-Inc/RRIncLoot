@@ -84,13 +84,11 @@ local function SetupLootDistribution(item)
 	local itemName = select(1, GetItemInfo(item))
 
 	if LootData[itemName] == nil then
-		print("TRIGGERED!")
 		RRIncLoot_StartFFARoll(item, true)
 		return false	
 	end
 
 	if next(LootData[itemName]) == nil then
-		print("TRIGGERED 2!")
 		RRIncLoot_StartFFARoll(item, true)
 		return false
 	end
