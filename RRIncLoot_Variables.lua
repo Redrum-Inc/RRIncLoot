@@ -23,7 +23,7 @@ local function SetCountdownMax(value)
     
 end
 
-local function ToggleAutoloot()
+function RRIncLoot_ToggleAutoloot()
 	if(RRIncLoot_Settings.autoloot) then
 		RRIncLoot_Settings.autoloot = false
 		print("RRIncLoot: Autoloot off.")
@@ -71,7 +71,7 @@ function SlashCmdList.RRINCLOOTCFG(msg)
 	end
 
 	if(option=="autoloot") then
-		ToggleAutoloot()
+		RRIncLoot_ToggleAutoloot()
 	end
 
 	if(option=="trash") then
