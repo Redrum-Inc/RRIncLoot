@@ -96,6 +96,14 @@ local function GetRankColorInRGB(rank)
 	return r,g,b
 end
 
+local function GetCount(array)
+	local count = 0
+	for i=1, #array do
+		count = count + 1
+	end
+	return count
+end
+
 local function SetGameToolTipPrice(tt)
 	local container = GetMouseFocus()	
 	local itemLink = select(2, tt:GetItem())
@@ -109,7 +117,7 @@ local function SetGameToolTipPrice(tt)
 			
 			local lootranking = FormatTooltipText(LootData[itemName])
 			tt:AddDoubleLine(" ","")
-			tt:AddDoubleLine("Loot ranking:","",0.65,0.05,0.05)
+			tt:AddDoubleLine("RRIncLoot:",GetCount(LootData[itemName]).." listed",0.6,0.1,0.1)
 
 			for i=1, #LootData[itemName] do
 				local r = 0 g = 0 b = 0
