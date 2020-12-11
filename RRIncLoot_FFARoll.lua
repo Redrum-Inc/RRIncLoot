@@ -40,9 +40,9 @@ function RRIncLoot_StartFFARoll(item, BypassedDistribution)
     ResetFFARoll()
     FFAStatus.rollActive = true
     FFAStatus.item = itemLink    
-    local ticks = CountdownMax + 1
-    FFAStatus.countdown = CountdownMax
-    local myTicker = C_Timer.NewTicker(2, RRIncLoot_Countdown, CountdownMax) 
+    local ticks = RRIncLoot_Settings.countdownMax + 1
+    FFAStatus.countdown = RRIncLoot_Settings.countdownMax
+    local myTicker = C_Timer.NewTicker(2, RRIncLoot_Countdown, RRIncLoot_Settings.countdownMax) 
     -- end
 end
 

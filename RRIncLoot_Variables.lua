@@ -21,6 +21,7 @@ RRIncLoot_Settings = {
 	-- whispers = true,
 	-- autoloot = true,
 	-- trashAssignee = "",
+	-- countdownMax = 10
 }
 
 -- Lock variable to not allow multiple distributions/rolls.
@@ -32,8 +33,8 @@ positiveHistoryText = "won or accepted"
 local function SetCountdownMax(value)
 	local number = tonumber (number)
 	if(value ~= nil or value ~= "") then
-		CountdownMax = value;
-		print("RRIncLoot: Counting down from " .. CountdownMax);
+		RRIncLoot_Settings.countdownMax = value;
+		print("RRIncLoot: Counting down from " .. RRIncLoot_Settings.countdownMax);
 	else
 		print("RRIncLoot: Supply a value for cooldown: /lcfg cd [value]")
 	end
@@ -106,7 +107,7 @@ end
 
 local function EventEnterWorld(self, event, isLogin, isReload)
 	-- Set default values. (This might need rework? Not sure how saved variables work in this regard.)
-	CountdownMax = CountdownMax or 10
+	RRIncLoot_Settings.countdownMax = RRIncLoot_Settings.countdownMax or 10
 	RRIncLoot_Settings.autoloot = RRIncLoot_Settings.autoloot or false
 	RRIncLoot_Settings.trashAssignee = RRIncLoot_Settings.trashAssignee or "NULL"
 	RRIncLoot_Settings.whispers = RRIncLoot_Settings.whispers or true
