@@ -35,6 +35,17 @@ Set target of autoloot items. Name is case sensitive!
 Make sure to shift-click the itemlink into chat for this.
 If there is players ranked for the item it will ask them in turn if they want it. If no players are ranked on the item it will go straight to FFA roll.
 
+### History
+```/loothistory``` or ```/lh```
+
+Will display all recorded item distributions.
+
+#### Clear history
+```/loothistory clear``` 
+
+```/lh clear```
+
+---
 
 ## Installation (for easy updates)
 1. Download and install [Git](https://git-scm.com/download/win) for Windows (don't worry about settings, just click through installer).
