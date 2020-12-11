@@ -108,7 +108,8 @@ local function SetGameToolTipPrice(tt)
 			end
 			
 			local lootranking = FormatTooltipText(LootData[itemName])
-			tt:AddDoubleLine("Loot ranking:","",0.7,0,0)
+			tt:AddDoubleLine(" ","")
+			tt:AddDoubleLine("Loot ranking:","",0.65,0.05,0.05)
 
 			for i=1, #LootData[itemName] do
 				local r = 0 g = 0 b = 0
