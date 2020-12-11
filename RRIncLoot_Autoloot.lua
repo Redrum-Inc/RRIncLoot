@@ -16,7 +16,6 @@ FrameAutoloot:SetScript("OnEvent", function(self, event, ...)
 
 	local masterlooterRaidID = select(3, GetLootMethod())
 	if masterlooterRaidID == nil then
-		print("No masterlooter.")
 		-- masterlooterRaidID - Returns index of the master looter in the raid (corresponding to a raidX unit), or nil if the player is not in a raid or master looting is not used.
 		return
 	else 
