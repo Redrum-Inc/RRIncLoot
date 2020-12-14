@@ -21,17 +21,18 @@ function SlashCmdList.RRINCLOOTHISTORY(msg)
 	if(msg == "") then
 		print("Passed/Lost:")
 		for i = 1, #LootHistory do
-			if string.find(LootHistory[i], negativeHistoryText) then
+			if string.find(LootHistory[i], "passed on") or string.find(LootHistory[i], "lost roll for") then
 				print(i, LootHistory[i])
 			end
 		end
 		print("----------")
 		print("Accepted/Won:")
 		for i = 1, #LootHistory do
-			if string.find(LootHistory[i], positiveHistoryText) then
+			if string.find(LootHistory[i], "accepted") or string.find(LootHistory[i], "won roll for") then
 				print(i, LootHistory[i])
 			end
 		end
+		print("----------")
 	end
 
 	if(msg == "clear") then

@@ -278,7 +278,7 @@ local function PlayerSubmitRespone(player, action)
 			end
 			if(action=="pass") then
 				LootDistribution.levels[LootDistribution.levelIndex].players[i].passed = true
-				RRIncLoot_AddLootHistory(player, negativeHistoryText, LootDistribution.item)
+				RRIncLoot_AddLootHistory(player, "passed on", LootDistribution.item)
 			end
 		end
 	end
@@ -319,7 +319,7 @@ local function EvaluateResponses()
 			if(players[i].accepted) then
 				-- SendChatMessage(players[i].name.." accepted.","RAID","COMMON")
 				SendChatMessage("Gz "..players[i].name.."!","RAID_WARNING","COMMON")
-				RRIncLoot_AddLootHistory(players[i].name, positiveHistoryText, LootDistribution.item)
+				RRIncLoot_AddLootHistory(players[i].name, "accepted", LootDistribution.item)
 				RRIncLoot_LockVar = false;
 				RemoveLocalRanking(LootDistribution.item, players[i].name, LootDistribution.levels[LootDistribution.levelIndex].level)
 			end
@@ -416,7 +416,7 @@ local function EvaluateRolls()
 			highestValueCount = highestValueCount + 1			
 		else
 			LootDistribution.levels[LootDistribution.levelIndex].players[i].lost = true
-			RRIncLoot_AddLootHistory(players[i].name, negativeHistoryText, LootDistribution.item)
+			RRIncLoot_AddLootHistory(players[i].name, "lost roll for", LootDistribution.item)
 		end
 	end
 	
@@ -432,7 +432,7 @@ local function EvaluateRolls()
 				LootDistribution.active = false
 				SendChatMessage(players[i].name.." won with a roll of "..highestValue..".","RAID","COMMON")
 				SendChatMessage("Gz "..players[i].name.."!","RAID_WARNING","COMMON")
-				RRIncLoot_AddLootHistory(players[i].name, positiveHistoryText, LootDistribution.item)
+				RRIncLoot_AddLootHistory(players[i].name, "won roll for", LootDistribution.item)
 				RRIncLoot_LockVar = false
 				RemoveLocalRanking(LootDistribution.item, players[i].name, LootDistribution.levels[LootDistribution.levelIndex].level)
 			end
