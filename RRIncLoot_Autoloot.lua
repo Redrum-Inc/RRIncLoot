@@ -10,7 +10,7 @@ FrameAutoloot:RegisterEvent("LOOT_OPENED")
 FrameAutoloot:SetScript("OnEvent", function(self, event, ...)
 	
 	if not RRIncLoot_Settings.autoloot then
-		print("Autoloot disabled.")
+		-- print("Autoloot disabled.")
 		return
 	end
 
