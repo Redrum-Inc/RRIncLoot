@@ -1,5 +1,5 @@
 ImportedData = {}
-ImportedDataTimestamp = "2020-12-16 17:14:17"
+ImportedDataTimestamp = "2020-12-16 19:41:06"
 
 ImportedData['Anubisath Warhammer']={{name="Nothagnus", ranking=53},{name="Yallfolx", ranking=45}}
 ImportedData['Garb of Royal Ascension']={{name="Adamnnan", ranking=40}}
@@ -78,7 +78,7 @@ ImportedData['Desecrated Shoulderpads']={{name="Magnor", ranking=50},{name="Laor
 ImportedData['Desecrated Spaulders']={{name="Harla", ranking=59},{name="Zelen", ranking=58},{name="Pudde", ranking=57},{name="Holycharge", ranking=53},{name="Derpa", ranking=46},{name="Secretary", ranking=38}}
 ImportedData['Desecrated Pauldrons']={{name="Latham", ranking=58},{name="Stealthlink", ranking=58},{name="Mondea", ranking=54},{name="Cakey", ranking=50},{name="Miayunni", ranking=49},{name="Exeles", ranking=49},{name="Teikoku", ranking=48},{name="Bjørn", ranking=47},{name="Galedia", ranking=45},{name="Stabbycorvo", ranking=45},{name="Xygo", ranking=45},{name="Tuuf", ranking=44},{name="Valantha", ranking=42},{name="Firê", ranking=33}}
 ImportedData['Desecrated Bindings']={{name="Drstomplol", ranking=44},{name="Greenglare", ranking=44},{name="Adamnnan", ranking=42},{name="Jolina", ranking=39},{name="Thalindra", ranking=37}}
-ImportedData['Desecrated Wristguards']={{name="Harla", ranking=58},{name="Sieje", ranking=57},{name="Pudde", ranking=54},{name="Holycharge", ranking=49},{name="Zelen", ranking=45},{name="Secretary", ranking=36}}
+ImportedData['Desecrated Wristguards']={{name="Sieje", ranking=57},{name="Pudde", ranking=54},{name="Holycharge", ranking=49},{name="Zelen", ranking=45},{name="Secretary", ranking=36}}
 ImportedData['Desecrated Bracers']={{name="Cakey", ranking=53},{name="Crit", ranking=52},{name="Nothagnus", ranking=51},{name="Xygo", ranking=50},{name="Stabbycorvo", ranking=49},{name="Latham", ranking=49},{name="Teikoku", ranking=48},{name="Miayunni", ranking=48},{name="Mondea", ranking=48},{name="Bjørn", ranking=43},{name="Warvink", ranking=41},{name="Tuuf", ranking=41},{name="Firê", ranking=32}}
 ImportedData['Desecrated Belt']={{name="Magnor", ranking=47},{name="Veriia", ranking=45},{name="Greenglare", ranking=42},{name="Drstomplol", ranking=41},{name="Adamnnan", ranking=40},{name="Thalindra", ranking=37}}
 ImportedData['Desecrated Girdle']={{name="Sieje", ranking=54},{name="Zelen", ranking=51},{name="Holycharge", ranking=51},{name="Derpa", ranking=44},{name="Secretary", ranking=37}}
