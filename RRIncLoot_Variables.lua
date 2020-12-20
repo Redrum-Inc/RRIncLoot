@@ -85,9 +85,9 @@ function SlashCmdList.RRINCLOOTCFG(msg)
 		ListTrashLoot()
 	end
 
-	if(option=="lootdata") then
-		LoadLootData()
-	end
+	-- if(option=="lootdata") then
+	-- 	LoadLootData()
+	-- end
 end
 
 local function EventEnterWorld(self, event, isLogin, isReload)
