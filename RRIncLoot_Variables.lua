@@ -6,7 +6,7 @@ RRIncLoot_Settings = {
 	-- countdownMax = 10
 }
 
-local nameGradient = "|cFF323232RR|r|cFF7F7F7FInc|r|cFFB2B2B2Loot|r"
+local nameGradient = "|cFF323232RR|r|cFF7F7F7FInc|r |cFF6B0B0BLoot|r"
 RRIncLoot_Prefix = nameGradient..": "
 
 -- Lock variable to prevent multiple distributions/rolls.
