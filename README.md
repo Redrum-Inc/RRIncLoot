@@ -27,6 +27,11 @@ Set target of autoloot items. Name is case sensitive!
 
 ```/lcfg trash [player name]```
 
+#### Reset Settings
+Reset settings to default values.
+
+```/lcfg reset```
+
 
 ### Usage
 ```/loot [itemlink]``` or ```/l [itemlink]```
