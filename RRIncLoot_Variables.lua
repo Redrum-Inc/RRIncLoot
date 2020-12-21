@@ -65,6 +65,36 @@ local function LoadLootData()
 	print(RRIncLoot_MessagePrefix.."Loaded data from import with timestamp \"|cFF00B200"..LootDataTimestamp.."|r\".")
 end
 
+local function ResetSettings()
+	RRIncLoot_Settings.countdownMax = 5
+	RRIncLoot_Settings.autoloot = false
+	RRIncLoot_Settings.trashAssignee = "NULL"
+	RRIncLoot_Settings.whispers = true
+	RRIncLoot_Settings.useAddonChannel = true
+	LootDataTimestamp = "0000-00-00 00:00:00"
+	ReloadUI()
+end
+
+local function ResetSettingsPrompt()
+	StaticPopupDialogs["RRIncLoot_ResetSettingsPrompt"] = {
+		text = "Are you sure you want to reset the settings?\nThis will reload your UI!",
+		button1 = "Yes",
+		button2 = "No",
+		OnAccept = function()
+			ResetSettings()
+		end,
+		OnCancel = function()
+			print(RRIncLoot_MessagePrefix.."Did not reset settings.")
+		end,
+		timeout = 0,
+		whileDead = true,
+		hideOnEscape = true,
+		preferredIndex = 3,  -- avoid some UI taint, see http://www.wowace.com/announcements/how-to-avoid-some-ui-taint/
+	}
+
+	StaticPopup_Show("RRIncLoot_ResetSettingsPrompt")
+end
+
 -- Loot Config
 
 SLASH_RRINCLOOTCFG1 = '/lootconfig'
@@ -88,29 +118,29 @@ function SlashCmdList.RRINCLOOTCFG(msg)
 		ListTrashLoot()
 	end
 
-	-- if(option=="lootdata") then
-	-- 	LoadLootData()
-	-- end
+	if(option=="reset") then
+		ResetSettingsPrompt()
+	end
 end
 
 local function EventEnterWorld(self, event, isLogin, isReload)
 	-- Set default values. (This might need rework? Not sure how saved variables work in this regard.)
-	RRIncLoot_Settings.countdownMax = RRIncLoot_Settings.countdownMax or 10
+	RRIncLoot_Settings.countdownMax = RRIncLoot_Settings.countdownMax or 5
 	RRIncLoot_Settings.autoloot = RRIncLoot_Settings.autoloot or false
 	RRIncLoot_Settings.trashAssignee = RRIncLoot_Settings.trashAssignee or "NULL"
 	RRIncLoot_Settings.whispers = RRIncLoot_Settings.whispers or true
 	RRIncLoot_Settings.useAddonChannel = RRIncLoot_Settings.useAddonChannel or true
+	LootDataTimestamp = LootDataTimestamp or "0000-00-00 00:00:00"
 
 	RRIncLoot_AddonName = GetAddOnMetadata("RRIncLoot", "Title")
 	RRIncLoot_MessagePrefix = RRIncLoot_AddonName..": "
 
 	if isLogin then
-		C_Timer.After(1, function() print(RRIncLoot_AddonName.." loaded. Roll countdown: "..RRIncLoot_Settings.countdownMax..", Autoloot: "..tostring(RRIncLoot_Settings.autoloot)..", Trash assignee: "..RRIncLoot_Settings.trashAssignee) end)	
+		C_Timer.After(1, function() print(RRIncLoot_AddonName.." loaded. Roll countdown: "..RRIncLoot_Settings.countdownMax..", Autoloot: "..tostring(RRIncLoot_Settings.autoloot)..", Trash assignee: "..RRIncLoot_Settings.trashAssignee) end)
 	end
 
 	if LootDataTimestamp ~= ImportedDataTimestamp then
 			C_Timer.After(3, function() print(RRIncLoot_MessagePrefix.."|cFFFF0000LootData timestamp \""..LootDataTimestamp.."\" differs from imported timestamp \""..ImportedDataTimestamp.."\"!|r") end)
-			-- C_Timer.After(4, function() print(RRIncLoot_Prefix.."Run command \"/lcfg lootdata\" to re-load imported values.") end)
 			C_Timer.After(4, function() LoadLootData() end)
 	else
 		C_Timer.After(3, function() print(RRIncLoot_MessagePrefix.."Using LootData with timestamp \""..LootDataTimestamp.."\".") end)
