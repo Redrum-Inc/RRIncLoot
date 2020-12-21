@@ -44,3 +44,6 @@ luac.out
 
 #VSCODE
 .vscode
+
+# TXT
+*.txt
