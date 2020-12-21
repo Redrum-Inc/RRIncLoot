@@ -63,7 +63,7 @@ local function RemoveLocalRanking(item, name, rank)
 	local targetIndex = 0
 
 	for i=1, #LootData[itemName] do
-		print(LootData[itemName][i].name, LootData[itemName][i].ranking, " | ", name, rank)
+		-- print(LootData[itemName][i].name, LootData[itemName][i].ranking, " | ", name, rank)
 		if LootData[itemName][i].name == name and LootData[itemName][i].ranking == rank then
 			targetIndex = i
 			
@@ -72,9 +72,9 @@ local function RemoveLocalRanking(item, name, rank)
 
 	if targetIndex > 0 then
 		table.remove(LootData[itemName], targetIndex) 
-		print("RRIncLoot: Removed "..name.." with rank "..rank.." from local loot data.")
+		print(RRIncLoot_MessagePrefix.."Removed "..name.." with rank "..rank.." from local loot data. This will not affect the sheets!")
 	else
-		print("RRIncLoot: RemoveLocalRanking cannot find target index!")
+		print(RRIncLoot_MessagePrefix.."ERROR! RemoveLocalRanking cannot find target index!")
 	end
 end
 
@@ -95,7 +95,7 @@ local function SetupLootDistribution(item)
 
 	LootDistribution.ranking = GetRankingString(LootData[itemName])
 
-	print(LootDistribution.ranking)
+	-- print(LootDistribution.ranking)
 
 	-- -- Output info about item. TODO: Make this raid message.
 	-- print("Item:", LootDistribution.item)
@@ -139,23 +139,23 @@ local function SetupLootDistribution(item)
 	end
 
 	-- Debug printing to check data.
-	for i = 1, #LootDistribution.levels do 
-		d(LootDistribution.levels[i].level..":")
-		for j = 1, #LootDistribution.levels[i].players do 
-			local player = LootDistribution.levels[i].players[j]
-			d(player.name, player.rolled, player.accepted, player.passed)
-		end
-		d("--------")
-	end
+	-- for i = 1, #LootDistribution.levels do 
+	-- 	d(LootDistribution.levels[i].level..":")
+	-- 	for j = 1, #LootDistribution.levels[i].players do 
+	-- 		local player = LootDistribution.levels[i].players[j]
+	-- 		d(player.name, player.rolled, player.accepted, player.passed)
+	-- 	end
+	-- 	d("--------")
+	-- end
 
 	return true
 end
 
 local function AnnounceLoot()
-	print("Distributing:", LootDistribution.item)
-	print("Current ranking:", LootDistribution.ranking)
+	-- print("Distributing:", LootDistribution.item)
+	-- print("Current ranking:", LootDistribution.ranking)
 	SendChatMessage("Distributing: "..LootDistribution.item,"RAID","COMMON");
-	SendChatMessage("Current ranking: "..LootDistribution.ranking,"RAID","COMMON");
+	SendChatMessage("Current ranking ("..LootDataTimestamp.."): "..LootDistribution.ranking,"RAID","COMMON");
 	SendChatMessage(LootDistribution.item,"RAID_WARNING","COMMON");	
 end
 
@@ -177,6 +177,13 @@ local function PromptNext()
 	if(RRIncLoot_Settings.whispers) then
 		for i=1, #players do
 			C_Timer.After(1, function() SendChatMessage("You are next in line for "..LootDistribution.item.."! RESPOND IN RAID CHAT, NOT WHISPER!","WHISPER" ,"COMMON", players[i].name) end)
+		end
+	end
+
+	if RRIncLoot_Settings.useAddonChannel and C_ChatInfo.IsAddonMessagePrefixRegistered(RRIncPrompt_AddonChannel) then
+		-- print("sending addon msg")
+		for i=1, #players do
+			C_ChatInfo.SendAddonMessage(RRIncPrompt_AddonChannel, players[i].name.."_".."next".."_"..LootDistribution.item, "RAID");
 		end
 	end
 end
@@ -204,6 +211,12 @@ local function PromptRoll()
 			if(players[i].accepted) then
 				C_Timer.After(1, function() SendChatMessage("You are tied for "..LootDistribution.item..": ROLL!","WHISPER" ,"COMMON", players[i].name) end)
 			end
+		end
+	end
+
+	if RRIncLoot_Settings.useAddonChannel and C_ChatInfo.IsAddonMessagePrefixRegistered(RRIncPrompt_AddonChannel) then		
+		for i=1, #players do
+			C_ChatInfo.SendAddonMessage(RRIncPrompt_AddonChannel, players[i].name.."_".."roll".."_"..LootDistribution.item, "RAID");
 		end
 	end
 end
@@ -254,7 +267,7 @@ end
 local function AllPlayersHaveResponded(players)	
 	for i=1, #players do
 		if(players[i].accepted == false and players[i].passed == false) then -- Check if players have neither accepted nor passed.
-			print("Have responded: ",i, players[i].player)
+			-- print("Have responded: ",i, players[i].player)
 			return false
 		end
 	end
@@ -299,7 +312,7 @@ local function StartRoll()
 end
 
 local function EvaluateResponses()
-	d("Evaluating responses...")
+	-- d("Evaluating responses...")
 
 	local players = LootDistribution.levels[LootDistribution.levelIndex].players
 	local acceptedCount = 0
@@ -375,7 +388,7 @@ end
 
 local function PlayerSubmitRoll(player, value)
 	local msg = "Accepted roll from "..player..": "..value
-	d(msg)
+	-- d(msg)
 	-- C_Timer.After(0, function() SendChatMessage(msg,"RAID","COMMON") end)
 	SendChatMessage(msg,"RAID","COMMON")
 	
@@ -397,7 +410,7 @@ local function AllPlayersHaveRolled(players)
 end
 
 local function EvaluateRolls()
-	d("Evaluating rolls...")
+	-- d("Evaluating rolls...")
 
 	local players = LootDistribution.levels[LootDistribution.levelIndex].players
 	
