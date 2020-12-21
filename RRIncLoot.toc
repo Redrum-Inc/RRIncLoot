@@ -1,5 +1,5 @@
 ## Interface: 11306
-## Version: 3
+## Version: 4
 ## Title: |cFF323232RR|r|cFF7F7F7FInc|r |cFF6B0B0BLoot|r
 ## Notes: Addon for RR Inc on EU-ZandalarTribe. Data valid for 2020-12-10. By |cFF6600CCPug|r.
 ## Author: |cFF6600CCPug|r
