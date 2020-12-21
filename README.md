@@ -8,9 +8,7 @@ Addon to help RR Inc with loot management.
 `/lcfg [command]`
 
 #### Import data
-Transfers data from the imported set to the SavedVariable that is used for distribution.
-
-```/lcfg lootdata```
+Command removed, data is loaded automatically if timestamp differs.
 
 #### Roll countdown
 Sets the countdown (times not seconds) for FFA rolls.
