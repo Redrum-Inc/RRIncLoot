@@ -114,7 +114,7 @@ local function AllPlayersHaveRolled(players)
 end
 
 local function EvaluateRolls()
-	print("Evaluating rolls...")
+	-- print("Evaluating rolls...")
 	
 	-- Find highest value
 	local highestValue = 0
@@ -170,7 +170,7 @@ local function EvaluateRolls()
 end
 
 local function EvaluateTargetedRolls()
-	print("Evaluating targeted rolls...")
+	-- print("Evaluating targeted rolls...")
 	
 	-- Find highest value
 	local highestValue = 0
