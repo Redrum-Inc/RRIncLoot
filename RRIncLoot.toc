@@ -4,7 +4,7 @@
 ## Notes: Addon for RR Inc on EU-ZandalarTribe. Data valid for 2020-12-10. By |cFF6600CCPug|r.
 ## Author: |cFF6600CCPug|r
 ## DefaultState: enabled
-## SavedVariables: LootHistory, RRIncLoot_Settings, LootData, LootDataTimestamp
+## SavedVariables: LootHistory, RRIncLoot_Settings, LootDataTimestamp, LootData
 
 IMPORTDATA.lua
 AUTOLOOTDATA.lua
