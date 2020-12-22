@@ -22,9 +22,9 @@ local function SetCountdownMax(value)
 	local number = tonumber (number)
 	if(value ~= nil or value ~= "") then
 		RRIncLoot_Settings.countdownMax = value;
-		print(RRIncLoot_Prefix.."Counting down from " .. RRIncLoot_Settings.countdownMax);
+		print(RRIncLoot_MessagePrefix.."Counting down from " .. RRIncLoot_Settings.countdownMax);
 	else
-		print(RRIncLoot_Prefix.."Supply a value for cooldown: /lcfg cd [value]")
+		print(RRIncLoot_MessagePrefix.."Supply a value for cooldown: /lcfg cd [value]")
 	end
     
 end
@@ -32,24 +32,24 @@ end
 function RRIncLoot_ToggleAutoloot()
 	if(RRIncLoot_Settings.autoloot) then
 		RRIncLoot_Settings.autoloot = false
-		print(RRIncLoot_Prefix.."Autoloot off.")
+		print(RRIncLoot_MessagePrefix.."Autoloot off.")
 	else
 		RRIncLoot_Settings.autoloot = true
-		print(RRIncLoot_Prefix.."Autoloot on.")
+		print(RRIncLoot_MessagePrefix.."Autoloot on.")
 	end    
 end
 
 local function SetTrashAssignee(name)
 	if(name ~= nil or name ~= "") then
 		RRIncLoot_Settings.trashAssignee = name
-		print(RRIncLoot_Prefix.."Trash will be given to "..name..".")
+		print(RRIncLoot_MessagePrefix.."Trash will be given to "..name..".")
 	else
-		print(RRIncLoot_Prefix.."Supply a name for trash assignee: /lcfg trash [name]")
+		print(RRIncLoot_MessagePrefix.."Supply a name for trash assignee: /lcfg trash [name]")
 	end
 end
 
 local function ListTrashLoot()
-	print(RRIncLoot_Prefix.."Trash list:")
+	print(RRIncLoot_MessagePrefix.."Trash list:")
 	for i=1, #AutolootData do
 		print(i)
 		for j=1, #AutolootData[i] do
