@@ -139,13 +139,15 @@ local function EventEnterWorld(self, event, isLogin, isReload)
 		C_Timer.After(1, function() print(RRIncLoot_AddonName.." loaded. Roll countdown: "..RRIncLoot_Settings.countdownMax..", Autoloot: "..tostring(RRIncLoot_Settings.autoloot)..", Trash assignee: "..RRIncLoot_Settings.trashAssignee) end)
 	end
 
-	if LootDataTimestamp ~= ImportedDataTimestamp then
-			C_Timer.After(3, function() print(RRIncLoot_MessagePrefix.."|cFFFF0000LootData timestamp \""..LootDataTimestamp.."\" differs from imported timestamp \""..ImportedDataTimestamp.."\"!|r") end)
-			C_Timer.After(4, function() LoadLootData() end)
-	else
-		C_Timer.After(3, function() print(RRIncLoot_MessagePrefix.."Using LootData with timestamp \""..LootDataTimestamp.."\".") end)
+	if isLogin or isReload then
+		if LootDataTimestamp ~= ImportedDataTimestamp then
+				C_Timer.After(3, function() print(RRIncLoot_MessagePrefix.."|cFFFF0000LootData timestamp \""..LootDataTimestamp.."\" differs from imported timestamp \""..ImportedDataTimestamp.."\"!|r") end)
+				C_Timer.After(4, function() LoadLootData() end)
+		else
+			C_Timer.After(3, function() print(RRIncLoot_MessagePrefix.."Using LootData with timestamp \""..LootDataTimestamp.."\".") end)
+		end
 	end
-
+	
 	local successfulRequest = C_ChatInfo.RegisterAddonMessagePrefix(RRIncPrompt_AddonChannel)
 end
 
