@@ -155,7 +155,7 @@ local function AnnounceLoot()
 	-- print("Distributing:", LootDistribution.item)
 	-- print("Current ranking:", LootDistribution.ranking)
 	SendChatMessage("Distributing: "..LootDistribution.item,"RAID","COMMON");
-	SendChatMessage("Current ranking ("..LootDataTimestamp.."): "..LootDistribution.ranking,"RAID","COMMON");
+	SendChatMessage("Ranking ("..LootDataTimestamp.."): "..LootDistribution.ranking:sub(0,200),"RAID","COMMON"); -- Added substring to prevent 
 	SendChatMessage(LootDistribution.item,"RAID_WARNING","COMMON");	
 end
 
