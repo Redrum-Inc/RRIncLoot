@@ -23,3 +23,54 @@ function RRIncLoot_PlayerIsMasterlooter()
 	end	
 	return true
 end
+
+local function GiveItem(itemLink, player)
+
+	if not RRIncLoot_LootOpen then
+		print(RRIncLoot_MessagePrefix.."Loot is not opened, aborting!")
+		return
+	end
+
+	local AmountOfLoot = GetNumLootItems()
+	--  print("Num loot:", AmountOfLoot)		
+
+	for i=1, AmountOfLoot, 1 do
+
+		local lootIcon, lootName, lootQuantity, rarity, locked, isQuestItem, questId, isActive = GetLootSlotInfo(i)
+		local currentItemLink = GetLootSlotLink(i)
+
+		local members = GetNumGroupMembers()
+
+		if currentItemLink == itemLink then				
+			for j=1, members, 1 do				
+				local candidate = GetMasterLootCandidate(i, j);
+				if(candidate == player) then
+					print(RRIncLoot_MessagePrefix.."Giving "..itemLink.." to "..candidate..".")
+					GiveMasterLoot(i, j);
+				end
+			end
+		end
+	end
+end
+
+function RRIncLoot_GiveLootToPlayer(itemLink, player)
+	
+	StaticPopupDialogs["RRIncLoot_GiveLootPrompt"] = {
+		text = itemLink.."\nAre you sure you want to give this item to "..player.."?",
+		button1 = "Yes",
+		button2 = "No",
+		OnAccept = function()
+			GiveItem(itemLink, player)
+		end,
+		OnCancel = function()
+			print(RRIncLoot_MessagePrefix.."Didn't give item.")
+		end,
+		timeout = 0,
+		whileDead = true,
+		hideOnEscape = true,
+		preferredIndex = 3,  -- avoid some UI taint, see http://www.wowace.com/announcements/how-to-avoid-some-ui-taint/
+	}
+
+	StaticPopup_Show("RRIncLoot_GiveLootPrompt")
+
+end
