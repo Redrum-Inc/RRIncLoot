@@ -1,6 +1,10 @@
 ImportedData = {}
-ImportedDataTimestamp = "2020-12-21 17:16:48"
+ImportedDataTimestamp = "2020-12-21 17:16:51"
 
+ImportedData['Linen Cloth']={{name="Rgue", ranking=45}}
+ImportedData['Frayed Bracers']={{name="Rgue", ranking=45}}
+ImportedData['Ragged Leather Pants']={{name="Rgue", ranking=45}}
+ImportedData['Ragged Cloak']={{name="Rgue", ranking=45}}
 ImportedData['Anubisath Warhammer']={{name="Nothagnus", ranking=53},{name="Yallfolx", ranking=45}}
 ImportedData['Garb of Royal Ascension']={{name="Adamnnan", ranking=45}}
 ImportedData['Ritssyn\'s Ring of Chaos']={{name="Jolina", ranking=54},{name="Drstomplol", ranking=47},{name="Greenglare", ranking=47}}

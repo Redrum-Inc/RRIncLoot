@@ -5,6 +5,7 @@ RRIncLoot_Settings = {
 	-- trashAssignee = "",
 	-- countdownMax = 10
 	-- useAddonChannel = true
+	-- giveLootPrompt = true
 }
 
 RRIncPrompt_AddonChannel = "RRIncPrompt"
@@ -14,6 +15,8 @@ RRIncLoot_MessagePrefix = RRIncLoot_AddonName..": "
 
 -- Lock variable to prevent multiple distributions/rolls.
 RRIncLoot_LockVar = false
+
+RRIncLoot_LootOpen = false
 
 negativeHistoryText = "lost or passed"
 positiveHistoryText = "won or accepted"
@@ -130,13 +133,14 @@ local function EventEnterWorld(self, event, isLogin, isReload)
 	RRIncLoot_Settings.trashAssignee = RRIncLoot_Settings.trashAssignee or "NULL"
 	RRIncLoot_Settings.whispers = RRIncLoot_Settings.whispers or true
 	RRIncLoot_Settings.useAddonChannel = RRIncLoot_Settings.useAddonChannel or true
+	RRIncLoot_Settings.giveLootToWinner = RRIncLoot_Settings.giveLootToWinner or true
 	LootDataTimestamp = LootDataTimestamp or "0000-00-00 00:00:00"
 
 	RRIncLoot_AddonName = GetAddOnMetadata("RRIncLoot", "Title")
 	RRIncLoot_MessagePrefix = RRIncLoot_AddonName..": "
 
 	if isLogin then
-		C_Timer.After(1, function() print(RRIncLoot_AddonName.." loaded. Roll countdown: "..RRIncLoot_Settings.countdownMax..", Autoloot: "..tostring(RRIncLoot_Settings.autoloot)..", Trash assignee: "..RRIncLoot_Settings.trashAssignee) end)
+		C_Timer.After(1, function() print(RRIncLoot_AddonName.." loaded. Roll countdown: "..RRIncLoot_Settings.countdownMax..", Autoloot: "..tostring(RRIncLoot_Settings.autoloot)..", Trash assignee: "..RRIncLoot_Settings.trashAssignee..", Give loot to winner: "..RRIncLoot_Settings.giveLootToWinner) end)
 	end
 
 	if isLogin or isReload then

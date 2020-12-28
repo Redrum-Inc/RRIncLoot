@@ -46,7 +46,8 @@ AutolootData = {
             "Ragged Leather Pants",
             "Ragged Leather Boots",
             "Flimsy Chain Bracers",
-            "Worn Hide Cloak"
+            "Worn Hide Cloak",
+            "Frayed Pants"
         },
         { -- Test Northsire Valley, wolves
             "Broken Fang",

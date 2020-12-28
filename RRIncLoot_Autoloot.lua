@@ -5,9 +5,11 @@
 -- https://wowwiki.fandom.com/wiki/World_of_Warcraft_API#Loot
 
 -- Event for looting, check how to parse available loot next.
-local FrameAutoloot = CreateFrame("Frame")
-FrameAutoloot:RegisterEvent("LOOT_OPENED")
-FrameAutoloot:SetScript("OnEvent", function(self, event, ...)
+local FrameAutolootOpen = CreateFrame("Frame")
+FrameAutolootOpen:RegisterEvent("LOOT_OPENED")
+FrameAutolootOpen:SetScript("OnEvent", function(self, event, ...)
+	-- print("even fired")
+	RRIncLoot_LootOpen = true
 	
 	if not RRIncLoot_Settings.autoloot then
 		-- print("Autoloot disabled.")
@@ -22,14 +24,14 @@ FrameAutoloot:SetScript("OnEvent", function(self, event, ...)
 		local rosterName = select(1, GetRaidRosterInfo(masterlooterRaidID)) 
 		local playerName = select(1, UnitName("player"))
 		if rosterName ~= playerName then
-			print("RRIncLoot: You are not the masterlooter, disabling autoloot.")
+			print(RRIncLoot_MessagePrefix.."You are not the masterlooter, disabling autoloot.")
 			RRIncLoot_ToggleAutoloot()
 			return
 		end
 	end	
 	
 	local AmountOfLoot = GetNumLootItems()
-	-- print("Num loot:", AmountOfLoot)		
+	--  print("Num loot:", AmountOfLoot)		
 
 	for i=1, AmountOfLoot, 1 do
 		local lootIcon, lootName, lootQuantity, rarity, locked, isQuestItem, questId, isActive = GetLootSlotInfo(i)
@@ -41,11 +43,17 @@ FrameAutoloot:SetScript("OnEvent", function(self, event, ...)
 			for j=1, members, 1 do				
 				local candidate = GetMasterLootCandidate(i, j);
 				if(candidate == RRIncLoot_Settings.trashAssignee) then
-					print("RRIncLoot: Trash detected, giving "..itemLink.." to "..candidate..".")
+					print(RRIncLoot_MessagePrefix.."Trash detected, giving "..itemLink.." to "..candidate..".")
 					GiveMasterLoot(i, j);
 				end
 			end
 		end
 	end
 	
+end)
+
+local FrameAutolootClosed = CreateFrame("Frame")
+FrameAutolootClosed:RegisterEvent("LOOT_CLOSED")
+FrameAutolootClosed:SetScript("OnEvent", function(self, event, ...)
+	RRIncLoot_LootOpen = false
 end)

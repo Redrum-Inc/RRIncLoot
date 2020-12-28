@@ -126,7 +126,7 @@ local function SetGameToolTipPrice(tt)
 
 				-- print(class)
 				if class == nil or class == "" then
-					r=0 g=0 b=0
+					r=0.4 g=0.4 b=0.4
 				else
 					r, g, b = GetClassColorInRGB(class)
 				end
