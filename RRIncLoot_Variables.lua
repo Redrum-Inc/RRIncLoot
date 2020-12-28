@@ -136,11 +136,12 @@ local function EventEnterWorld(self, event, isLogin, isReload)
 	RRIncLoot_Settings.giveLootToWinner = RRIncLoot_Settings.giveLootToWinner or true
 	LootDataTimestamp = LootDataTimestamp or "0000-00-00 00:00:00"
 
-	RRIncLoot_AddonName = GetAddOnMetadata("RRIncLoot", "Title")
+	RRIncLoot_AddonName = GetAddOnMetadata("RRIncLoot", "Title")	
 	RRIncLoot_MessagePrefix = RRIncLoot_AddonName..": "
+	local version = GetAddOnMetadata("RRIncLoot", "Version")
 
 	if isLogin then
-		C_Timer.After(1, function() print(RRIncLoot_AddonName.." loaded. Roll countdown: "..RRIncLoot_Settings.countdownMax..", Autoloot: "..tostring(RRIncLoot_Settings.autoloot)..", Trash assignee: "..RRIncLoot_Settings.trashAssignee..", Give loot to winner: "..RRIncLoot_Settings.giveLootToWinner) end)
+		C_Timer.After(1, function() print(RRIncLoot_AddonName.." v"..version.." loaded. Roll countdown: "..RRIncLoot_Settings.countdownMax..", Autoloot: "..tostring(RRIncLoot_Settings.autoloot)..", Trash assignee: "..RRIncLoot_Settings.trashAssignee..", Give loot to winner: "..tostring(RRIncLoot_Settings.giveLootToWinner)) end)
 	end
 
 	if isLogin or isReload then

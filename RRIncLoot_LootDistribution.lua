@@ -335,7 +335,6 @@ local function EvaluateResponses()
 				RRIncLoot_AddLootHistory(players[i].name, "accepted", LootDistribution.item)
 				RRIncLoot_LockVar = false;
 				RemoveLocalRanking(LootDistribution.item, players[i].name, LootDistribution.levels[LootDistribution.levelIndex].level)
-				print("Prompt accept:")
 				RRIncLoot_GiveLootToPlayer(LootDistribution.item, players[i].name)
 			end
 		end
@@ -450,7 +449,6 @@ local function EvaluateRolls()
 				RRIncLoot_AddLootHistory(players[i].name, "won roll for", LootDistribution.item)
 				RRIncLoot_LockVar = false
 				RemoveLocalRanking(LootDistribution.item, players[i].name, LootDistribution.levels[LootDistribution.levelIndex].level)
-				print("Prompt roll:")
 				RRIncLoot_GiveLootToPlayer(LootDistribution.item, players[i].name)
 			end
 		end

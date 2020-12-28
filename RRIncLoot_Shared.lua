@@ -54,6 +54,11 @@ local function GiveItem(itemLink, player)
 end
 
 function RRIncLoot_GiveLootToPlayer(itemLink, player)
+
+	if not RRIncLoot_LootOpen then
+		print(RRIncLoot_MessagePrefix.."Loot is not opened, can't give item!")
+		return
+	end
 	
 	StaticPopupDialogs["RRIncLoot_GiveLootPrompt"] = {
 		text = itemLink.."\nAre you sure you want to give this item to "..player.."?",
