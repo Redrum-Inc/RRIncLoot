@@ -47,6 +47,7 @@ local function GiveItem(itemLink, player)
 				if(candidate == player) then
 					print(RRIncLoot_MessagePrefix.."Giving "..itemLink.." to "..candidate..".")
 					GiveMasterLoot(i, j);
+					return -- Think this will prevent giving away multiple of the same item to one person.
 				end
 			end
 		end
