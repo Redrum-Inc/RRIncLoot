@@ -3,7 +3,7 @@ Addon to help RR Inc with loot management.
 
 ## Config
 
-Commands have been removed and replaced by Interface Options:
+Commands have been replaced by Interface Options:
 
 ![interface options image](https://i.imgur.com/FqF55Lp.png)
 
