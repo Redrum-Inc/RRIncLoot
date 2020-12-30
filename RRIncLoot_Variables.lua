@@ -21,35 +21,35 @@ RRIncLoot_LootOpen = false
 negativeHistoryText = "lost or passed"
 positiveHistoryText = "won or accepted"
 
-local function SetCountdownMax(value)
-	local number = tonumber (number)
-	if(value ~= nil or value ~= "") then
-		RRIncLoot_Settings.countdownMax = value;
-		print(RRIncLoot_MessagePrefix.."Counting down from " .. RRIncLoot_Settings.countdownMax);
-	else
-		print(RRIncLoot_MessagePrefix.."Supply a value for cooldown: /lcfg cd [value]")
-	end
+-- local function SetCountdownMax(value)
+-- 	local number = tonumber (number)
+-- 	if(value ~= nil or value ~= "") then
+-- 		RRIncLoot_Settings.countdownMax = value;
+-- 		print(RRIncLoot_MessagePrefix.."Counting down from " .. RRIncLoot_Settings.countdownMax);
+-- 	else
+-- 		print(RRIncLoot_MessagePrefix.."Supply a value for cooldown: /lcfg cd [value]")
+-- 	end
     
-end
+-- end
 
-function RRIncLoot_ToggleAutoloot()
-	if(RRIncLoot_Settings.autoloot) then
-		RRIncLoot_Settings.autoloot = false
-		print(RRIncLoot_MessagePrefix.."Autoloot off.")
-	else
-		RRIncLoot_Settings.autoloot = true
-		print(RRIncLoot_MessagePrefix.."Autoloot on.")
-	end    
-end
+-- function RRIncLoot_ToggleAutoloot()
+-- 	if(RRIncLoot_Settings.autoloot) then
+-- 		RRIncLoot_Settings.autoloot = false
+-- 		print(RRIncLoot_MessagePrefix.."Autoloot off.")
+-- 	else
+-- 		RRIncLoot_Settings.autoloot = true
+-- 		print(RRIncLoot_MessagePrefix.."Autoloot on.")
+-- 	end    
+-- end
 
-local function SetTrashAssignee(name)
-	if(name ~= nil or name ~= "") then
-		RRIncLoot_Settings.trashAssignee = name
-		print(RRIncLoot_MessagePrefix.."Trash will be given to "..name..".")
-	else
-		print(RRIncLoot_MessagePrefix.."Supply a name for trash assignee: /lcfg trash [name]")
-	end
-end
+-- local function SetTrashAssignee(name)
+-- 	if(name ~= nil or name ~= "") then
+-- 		RRIncLoot_Settings.trashAssignee = name
+-- 		print(RRIncLoot_MessagePrefix.."Trash will be given to "..name..".")
+-- 	else
+-- 		print(RRIncLoot_MessagePrefix.."Supply a name for trash assignee: /lcfg trash [name]")
+-- 	end
+-- end
 
 local function ListTrashLoot()
 	print(RRIncLoot_MessagePrefix.."Trash list:")
@@ -69,11 +69,11 @@ local function LoadLootData()
 end
 
 local function ResetSettings()
-	RRIncLoot_Settings.countdownMax = 5
-	RRIncLoot_Settings.autoloot = false
-	RRIncLoot_Settings.trashAssignee = "NULL"
-	RRIncLoot_Settings.whispers = true
-	RRIncLoot_Settings.useAddonChannel = true
+	rrilOptionCountdown = 5
+	rrilOptionUseAutoloot = false
+	rrilOptionAutolootTarget = ""
+	rrilOptionUseWhispers = true
+	rrilOptionUseAddonChannel = true
 	LootDataTimestamp = "0000-00-00 00:00:00"
 	ReloadUI()
 end
@@ -105,17 +105,17 @@ SLASH_RRINCLOOTCFG2 = '/lcfg'
 function SlashCmdList.RRINCLOOTCFG(msg)
 	local option, value = strsplit(" ",msg)	
 
-	if(option == "cd" or option == "countdown") then
-		SetCountdownMax(value)
-	end
+	-- if(option == "cd" or option == "countdown") then
+	-- 	SetCountdownMax(value)
+	-- end
 
-	if(option=="autoloot") then
-		RRIncLoot_ToggleAutoloot()
-	end
+	-- if(option=="autoloot") then
+	-- 	RRIncLoot_ToggleAutoloot()
+	-- end
 
-	if(option=="trash") then
-		SetTrashAssignee(value)
-	end
+	-- if(option=="trash") then
+	-- 	SetTrashAssignee(value)
+	-- end
 
 	if(option=="trashlist") then
 		ListTrashLoot()
@@ -128,12 +128,12 @@ end
 
 local function EventEnterWorld(self, event, isLogin, isReload)
 	-- Set default values. (This might need rework? Not sure how saved variables work in this regard.)
-	RRIncLoot_Settings.countdownMax = RRIncLoot_Settings.countdownMax or 5
-	RRIncLoot_Settings.autoloot = RRIncLoot_Settings.autoloot or false
-	RRIncLoot_Settings.trashAssignee = RRIncLoot_Settings.trashAssignee or "NULL"
-	RRIncLoot_Settings.whispers = RRIncLoot_Settings.whispers or true
-	RRIncLoot_Settings.useAddonChannel = RRIncLoot_Settings.useAddonChannel or true
-	RRIncLoot_Settings.giveLootToWinner = RRIncLoot_Settings.giveLootToWinner or true
+	rrilOptionCountdown = rrilOptionCountdown or 5
+	rrilOptionUseAutoloot = rrilOptionUseAutoloot or false
+	rrilOptionAutolootTarget = rrilOptionAutolootTarget or "NULL"
+	rrilOptionUseWhispers = rrilOptionUseWhispers or true
+	rrilOptionUseAddonChannel = rrilOptionUseAddonChannel or true
+	rrilOptionGiveLootToWinner = rrilOptionGiveLootToWinner or true
 	LootDataTimestamp = LootDataTimestamp or "0000-00-00 00:00:00"
 
 	RRIncLoot_AddonName = GetAddOnMetadata("RRIncLoot", "Title")	
@@ -141,7 +141,7 @@ local function EventEnterWorld(self, event, isLogin, isReload)
 	local version = GetAddOnMetadata("RRIncLoot", "Version")
 
 	if isLogin then
-		C_Timer.After(1, function() print(RRIncLoot_AddonName.." v"..version.." loaded. Roll countdown: "..RRIncLoot_Settings.countdownMax..", Autoloot: "..tostring(RRIncLoot_Settings.autoloot)..", Trash assignee: "..RRIncLoot_Settings.trashAssignee..", Give loot to winner: "..tostring(RRIncLoot_Settings.giveLootToWinner)) end)
+		C_Timer.After(1, function() print(RRIncLoot_AddonName.." v"..version.." loaded. Roll countdown: "..rrilOptionCountdown..", Autoloot: "..tostring(rrilOptionUseAutoloot)..", Trash assignee: "..rrilOptionAutolootTarget..", Give loot to winner: "..tostring(rrilOptionGiveLootToWinner)) end)
 	end
 
 	if isLogin or isReload then
@@ -152,7 +152,7 @@ local function EventEnterWorld(self, event, isLogin, isReload)
 			C_Timer.After(3, function() print(RRIncLoot_MessagePrefix.."Using LootData with timestamp \""..LootDataTimestamp.."\".") end)
 		end
 	end
-	
+
 	local successfulRequest = C_ChatInfo.RegisterAddonMessagePrefix(RRIncPrompt_AddonChannel)
 end
 

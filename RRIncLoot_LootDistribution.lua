@@ -174,13 +174,13 @@ local function PromptNext()
 
 	SendChatMessage(msgPrompt,"RAID","COMMON");
 
-	if(RRIncLoot_Settings.whispers) then
+	if(rrilOptionUseWhispers) then
 		for i=1, #players do
 			C_Timer.After(1, function() SendChatMessage("You are next in line for "..LootDistribution.item.."! RESPOND IN RAID CHAT, NOT WHISPER!","WHISPER" ,"COMMON", players[i].name) end)
 		end
 	end
 
-	if RRIncLoot_Settings.useAddonChannel and C_ChatInfo.IsAddonMessagePrefixRegistered(RRIncPrompt_AddonChannel) then
+	if rrilOptionUseAddonChannel and C_ChatInfo.IsAddonMessagePrefixRegistered(RRIncPrompt_AddonChannel) then
 		-- print("sending addon msg")
 		for i=1, #players do
 			C_ChatInfo.SendAddonMessage(RRIncPrompt_AddonChannel, players[i].name.."_".."next".."_"..LootDistribution.item, "RAID");
@@ -206,7 +206,7 @@ local function PromptRoll()
 	msgPrompt = msgPrompt.." you are tied: ROLL!"
 
 	C_Timer.After(0, function() SendChatMessage(msgPrompt,"RAID","COMMON") end)
-	if(RRIncLoot_Settings.whispers) then
+	if(rrilOptionUseWhispers) then
 		for i=1, #players do
 			if(players[i].accepted) then
 				C_Timer.After(1, function() SendChatMessage("You are tied for "..LootDistribution.item..": ROLL!","WHISPER" ,"COMMON", players[i].name) end)
@@ -214,7 +214,7 @@ local function PromptRoll()
 		end
 	end
 
-	if RRIncLoot_Settings.useAddonChannel and C_ChatInfo.IsAddonMessagePrefixRegistered(RRIncPrompt_AddonChannel) then		
+	if rrilOptionUseAddonChannel and C_ChatInfo.IsAddonMessagePrefixRegistered(RRIncPrompt_AddonChannel) then		
 		for i=1, #players do
 			C_ChatInfo.SendAddonMessage(RRIncPrompt_AddonChannel, players[i].name.."_".."roll".."_"..LootDistribution.item, "RAID");
 		end
