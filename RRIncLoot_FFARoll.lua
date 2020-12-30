@@ -61,12 +61,10 @@ local function StartTargetedRoll()
             msgPlayers = msgPlayers..", "..Targeted.players[i].player
         end
         C_Timer.After(1, function() SendChatMessage("You are tied for "..Targeted.item..". Roll again!","WHISPER" ,"COMMON", Targeted.players[i].player) end)
-        C_ChatInfo.SendAddonMessage(RRIncPrompt_AddonChannel, Targeted.players[i].name.."_".."roll".."_"..Targeted.item, "RAID");
+        C_ChatInfo.SendAddonMessage(RRIncPrompt_AddonChannel, Targeted.players[i].player.."_".."roll".."_"..Targeted.item, "RAID");
     end
 
     SendChatMessage(msgPlayers.." are tied for "..Targeted.item.. ". Roll again!","RAID","COMMON")
-
-
 end
 
 local function PlayerIsAllowedRoll(rolls, player)
@@ -212,11 +210,10 @@ local function EvaluateTargetedRolls()
 			if(Targeted.players[i].roll == highestValue) then
 				FFAStatus.rollActive = false
                 SendChatMessage(Targeted.players[i].player.." won with a roll of "..highestValue..".","RAID","COMMON")
-                RRIncLoot_LockVar = false
+                RRIncLoot_LockVar = false                
 			end
         end
-    else
-        SendChatMessage("No rolls, DE.","RAID","COMMON")
+        ResetTargeted()    
 	end
 	
 end
@@ -240,7 +237,7 @@ end
 local FrameSystemParseFFA = CreateFrame("Frame")
 FrameSystemParseFFA:RegisterEvent("CHAT_MSG_SYSTEM")
 FrameSystemParseFFA:HookScript("OnEvent", function(self, event, msg) 
-    local rangeIdentifier = "(1-100)"
+    local rangeIdentifier = "(1-2)"
 
 	if(FFAStatus.rollActive or Targeted.rollActive) then
 		local system = {strsplit(" ", msg)}
