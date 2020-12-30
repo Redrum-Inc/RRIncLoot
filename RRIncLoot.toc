@@ -1,13 +1,16 @@
 ## Interface: 11306
-## Version: 4
+## Version: 5
 ## Title: |cFF323232RR|r|cFF7F7F7FInc|r |cFF6B0B0BLoot|r
-## Notes: Addon for RR Inc on EU-ZandalarTribe. Data valid for 2020-12-10. By |cFF6600CCPug|r.
+## Notes: Addon for RR Inc on EU-ZandalarTribe. By |cFF6600CCPug|r.
 ## Author: |cFF6600CCPug|r
 ## DefaultState: enabled
-## SavedVariables: LootHistory, RRIncLoot_Settings, LootDataTimestamp, LootData
+## SavedVariables: rrilOptionUseWhispers, rrilOptionUseAddonChannel, rrilOptionUseAutoloot, rrilOptionAutolootTarget, rrilOptionCountdown, rrilOptionGiveLootToWinner, LootHistory, LootDataTimestamp, LootData
+
+Libraries\Load_Libraries.xml
 
 IMPORTDATA.lua
 AUTOLOOTDATA.lua
+RRIncLoot_OptionsGUI.lua
 RRIncLoot_Variables.lua
 RRIncLoot_Shared.lua
 RRIncLoot_History.lua

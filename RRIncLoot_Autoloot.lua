@@ -11,7 +11,7 @@ FrameAutolootOpen:SetScript("OnEvent", function(self, event, ...)
 	-- print("even fired")
 	RRIncLoot_LootOpen = true
 	
-	if not RRIncLoot_Settings.autoloot then
+	if not rrilOptionUseAutoloot then
 		-- print("Autoloot disabled.")
 		return
 	end
@@ -42,7 +42,7 @@ FrameAutolootOpen:SetScript("OnEvent", function(self, event, ...)
 			
 			for j=1, members, 1 do				
 				local candidate = GetMasterLootCandidate(i, j);
-				if(candidate == RRIncLoot_Settings.trashAssignee) then
+				if(candidate == rrilOptionAutolootTarget) then
 					print(RRIncLoot_MessagePrefix.."Trash detected, giving "..itemLink.." to "..candidate..".")
 					GiveMasterLoot(i, j);
 				end
