@@ -1,9 +1,9 @@
 # RRIncLoot
 Addon to help RR Inc with loot management.
 
-## Commands
+## Config
 
-Replaced by Interface Options:
+Commands have been removed and replaced by Interface Options:
 
 ![interface options image](https://i.imgur.com/FqF55Lp.png)
 
