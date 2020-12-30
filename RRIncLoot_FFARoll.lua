@@ -36,6 +36,7 @@ function RRIncLoot_StartFFARoll(item, BypassedDistribution)
 
     
     SendChatMessage(itemLink.." FFA ROLL!","RAID_WARNING","COMMON")
+    C_ChatInfo.SendAddonMessage(RRIncPrompt_AddonChannel, "all".."_".."ffa".."_"..itemLink, "RAID");
    
     ResetFFARoll()
     FFAStatus.rollActive = true
@@ -60,9 +61,12 @@ local function StartTargetedRoll()
             msgPlayers = msgPlayers..", "..Targeted.players[i].player
         end
         C_Timer.After(1, function() SendChatMessage("You are tied for "..Targeted.item..". Roll again!","WHISPER" ,"COMMON", Targeted.players[i].player) end)
+        C_ChatInfo.SendAddonMessage(RRIncPrompt_AddonChannel, Targeted.players[i].name.."_".."roll".."_"..Targeted.item, "RAID");
     end
 
     SendChatMessage(msgPlayers.." are tied for "..Targeted.item.. ". Roll again!","RAID","COMMON")
+
+
 end
 
 local function PlayerIsAllowedRoll(rolls, player)
