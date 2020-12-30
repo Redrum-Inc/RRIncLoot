@@ -68,35 +68,35 @@ local function LoadLootData()
 	print(RRIncLoot_MessagePrefix.."Loaded data from import with timestamp \"|cFF00B200"..LootDataTimestamp.."|r\".")
 end
 
-local function ResetSettings()
-	rrilOptionCountdown = 5
-	rrilOptionUseAutoloot = false
-	rrilOptionAutolootTarget = ""
-	rrilOptionUseWhispers = true
-	rrilOptionUseAddonChannel = true
-	LootDataTimestamp = "0000-00-00 00:00:00"
-	ReloadUI()
-end
+-- local function ResetSettings()
+-- 	rrilOptionCountdown = 5
+-- 	rrilOptionUseAutoloot = false
+-- 	rrilOptionAutolootTarget = ""
+-- 	rrilOptionUseWhispers = true
+-- 	rrilOptionUseAddonChannel = true
+-- 	LootDataTimestamp = "0000-00-00 00:00:00"
+-- 	ReloadUI()
+-- end
 
-local function ResetSettingsPrompt()
-	StaticPopupDialogs["RRIncLoot_ResetSettingsPrompt"] = {
-		text = "Are you sure you want to reset the settings?\nThis will reload your UI!",
-		button1 = "Yes",
-		button2 = "No",
-		OnAccept = function()
-			ResetSettings()
-		end,
-		OnCancel = function()
-			print(RRIncLoot_MessagePrefix.."Did not reset settings.")
-		end,
-		timeout = 0,
-		whileDead = true,
-		hideOnEscape = true,
-		preferredIndex = 3,  -- avoid some UI taint, see http://www.wowace.com/announcements/how-to-avoid-some-ui-taint/
-	}
+-- local function ResetSettingsPrompt()
+-- 	StaticPopupDialogs["RRIncLoot_ResetSettingsPrompt"] = {
+-- 		text = "Are you sure you want to reset the settings?\nThis will reload your UI!",
+-- 		button1 = "Yes",
+-- 		button2 = "No",
+-- 		OnAccept = function()
+-- 			ResetSettings()
+-- 		end,
+-- 		OnCancel = function()
+-- 			print(RRIncLoot_MessagePrefix.."Did not reset settings.")
+-- 		end,
+-- 		timeout = 0,
+-- 		whileDead = true,
+-- 		hideOnEscape = true,
+-- 		preferredIndex = 3,  -- avoid some UI taint, see http://www.wowace.com/announcements/how-to-avoid-some-ui-taint/
+-- 	}
 
-	StaticPopup_Show("RRIncLoot_ResetSettingsPrompt")
-end
+-- 	StaticPopup_Show("RRIncLoot_ResetSettingsPrompt")
+-- end
 
 -- Loot Config
 
@@ -121,16 +121,16 @@ function SlashCmdList.RRINCLOOTCFG(msg)
 		ListTrashLoot()
 	end
 
-	if(option=="reset") then
-		ResetSettingsPrompt()
-	end
+	-- if(option=="reset") then
+	-- 	ResetSettingsPrompt()
+	-- end
 end
 
 local function EventEnterWorld(self, event, isLogin, isReload)
 	-- Set default values. (This might need rework? Not sure how saved variables work in this regard.)
 	rrilOptionCountdown = rrilOptionCountdown or 5
 	rrilOptionUseAutoloot = rrilOptionUseAutoloot or false
-	rrilOptionAutolootTarget = rrilOptionAutolootTarget or "NULL"
+	rrilOptionAutolootTarget = rrilOptionAutolootTarget or ""
 	rrilOptionUseWhispers = rrilOptionUseWhispers or true
 	rrilOptionUseAddonChannel = rrilOptionUseAddonChannel or true
 	rrilOptionGiveLootToWinner = rrilOptionGiveLootToWinner or true
