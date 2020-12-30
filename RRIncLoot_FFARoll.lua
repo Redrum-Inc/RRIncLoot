@@ -237,7 +237,7 @@ end
 local FrameSystemParseFFA = CreateFrame("Frame")
 FrameSystemParseFFA:RegisterEvent("CHAT_MSG_SYSTEM")
 FrameSystemParseFFA:HookScript("OnEvent", function(self, event, msg) 
-    local rangeIdentifier = "(1-2)"
+    local rangeIdentifier = "(1-100)"
 
 	if(FFAStatus.rollActive or Targeted.rollActive) then
 		local system = {strsplit(" ", msg)}
