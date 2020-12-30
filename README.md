@@ -3,36 +3,8 @@ Addon to help RR Inc with loot management.
 
 ## Commands
 
-~~### Configuration
-`/lootconfig [command]` or
-`/lcfg [command]`
-
-~~#### Import data
-Command removed, data is loaded automatically if timestamp differs.
-
-~~#### Roll countdown
-Sets the countdown (times not seconds) for FFA rolls.
-
-~~```/lootconfig countdown 5```
-
-~~```/lcfg cd 5```
-
-~~#### Autoloot
-Toggle autolooting of pre-defined list of items (among other things Scarabs in AQ and Scraps in Naxx, basically anything that's a pain for the ML to assign manually).
-
-~~```/lcfg autoloot```
-
-~~#### Autoloot Assignee
-Set target of autoloot items. Name is case sensitive!
-
-~~```/lcfg trash [player name]```
-
-~~#### Reset Settings
-Reset settings to default values.
-
-~~```/lcfg reset```
-
 Replaced by Interface Options:
+
 ![interface options image](https://i.imgur.com/FqF55Lp.png)
 
 ### Usage
