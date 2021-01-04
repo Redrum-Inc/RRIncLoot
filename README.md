@@ -30,11 +30,11 @@ Will display all recorded item distributions.
 
 ![release image](https://i.imgur.com/qzhRB9c.png)
 
-Inside the RRIncLoot folder there should be a file named update.ps1:
+Inside the RRIncLoot folder there should be a file named update_v5.ps1:
 
 ![update.ps1 file](https://i.imgur.com/f0viGEJ.png)
 
-3. Right click update.ps1 and choose "Run with powershell":
+3. Right click update_v5.ps1 and choose "Run with powershell":
 
 ![run with powershell](https://i.imgur.com/SFF8bf6.png)
 
