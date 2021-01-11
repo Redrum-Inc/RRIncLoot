@@ -10,6 +10,7 @@ Config commands have been replaced by Interface Options:
 ## Usage
 ### Loot distribution
 ```/loot [itemlink]``` or ```/l [itemlink]```
+
 Make sure to shift-click the itemlink into chat for this.
 Players ranked for the item will be asked in turn if they want it. If no players are ranked on the item it will go straight to FFA roll.
 
