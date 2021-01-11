@@ -7,17 +7,25 @@ Commands have been replaced by Interface Options:
 
 ![interface options image](https://i.imgur.com/FqF55Lp.png)
 
-### Usage
+## Usage
+### Loot distribution
 ```/loot [itemlink]``` or ```/l [itemlink]```
 Make sure to shift-click the itemlink into chat for this.
-If there is players ranked for the item it will ask them in turn if they want it. If no players are ranked on the item it will go straight to FFA roll.
+Players ranked for the item will be asked in turn if they want it. If no players are ranked on the item it will go straight to FFA roll.
+
+If the "Give loot to winner" option is checked it will try to give loot to winners automatically if you have the loot window open (assigned through master looter). There will be a prompt asking if you would like to give them the item.
+
+Currently there is no way to abort a distribution, should you need to do so or if you just need to reset it do: ```/reload```
+
+### Autoloot
+Enable this option and enter the name of the desired target player (case sensitive). Things like Scraps, Scarabs, Word of Thawing and Coffer Keys will be given to the target as soon as you open the loot window (through master looter, so make sure it's set to Common items).
 
 ### History
 ```/loothistory``` or ```/lh```
 
 Will display all recorded item distributions.
 
-#### Clear history
+### Clear history
 ```/loothistory clear``` 
 
 ```/lh clear```
