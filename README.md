@@ -30,6 +30,8 @@ Will display all recorded item distributions.
 
 ```/lh clear```
 
+Removes all history, recommended to do after each raid when data have been posted on discord.
+
 ---
 
 ## Installation (for easy updates)
