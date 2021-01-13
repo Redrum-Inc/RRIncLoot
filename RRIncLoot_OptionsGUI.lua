@@ -1,4 +1,4 @@
-local RRIncPrompt = LibStub("AceAddon-3.0"):NewAddon("RRIncLoot")
+local RRIncLoot = LibStub("AceAddon-3.0"):NewAddon("RRIncLoot")
 local AceGUI = LibStub("AceGUI-3.0")
 local test = false
 local range = 0
