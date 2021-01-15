@@ -21,6 +21,9 @@ RRIncLoot_LootOpen = false
 negativeHistoryText = "lost or passed"
 positiveHistoryText = "won or accepted"
 
+function TESTGLOBAL()
+	print("You found me!")
+end
 -- local function SetCountdownMax(value)
 -- 	local number = tonumber (number)
 -- 	if(value ~= nil or value ~= "") then
@@ -100,30 +103,18 @@ end
 
 -- Loot Config
 
-SLASH_RRINCLOOTCFG1 = '/lootconfig'
-SLASH_RRINCLOOTCFG2 = '/lcfg'
-function SlashCmdList.RRINCLOOTCFG(msg)
+SLASH_RRINCLOOTOPTIONS1 = '/rrincloot'
+SLASH_RRINCLOOTOPTIONS2 = '/rril'
+function SlashCmdList.RRINCLOOTOPTIONS(msg)
 	local option, value = strsplit(" ",msg)	
-
-	-- if(option == "cd" or option == "countdown") then
-	-- 	SetCountdownMax(value)
-	-- end
-
-	-- if(option=="autoloot") then
-	-- 	RRIncLoot_ToggleAutoloot()
-	-- end
-
-	-- if(option=="trash") then
-	-- 	SetTrashAssignee(value)
-	-- end
-
-	if(option=="trashlist") then
-		ListTrashLoot()
-	end
-
-	-- if(option=="reset") then
-	-- 	ResetSettingsPrompt()
-	-- end
+    print(msg)
+    if(option == "" or option == nil) then
+        if ( not InterfaceOptionsFrame:IsShown() ) then
+            InterfaceOptionsFrame:Show();
+            InterfaceOptionsFrame_OpenToCategory("RRInc Loot");
+        end
+        return
+    end
 end
 
 local function EventEnterWorld(self, event, isLogin, isReload)
@@ -134,6 +125,10 @@ local function EventEnterWorld(self, event, isLogin, isReload)
 	rrilOptionUseWhispers = rrilOptionUseWhispers or true
 	rrilOptionUseAddonChannel = rrilOptionUseAddonChannel or true
 	rrilOptionGiveLootToWinner = rrilOptionGiveLootToWinner or true
+	rrilOptionAnnounceLoot = rrilOptionAnnounceLoot or true
+	rrilOptionDisenchant = rrilOptionDisenchant or true
+	rrilOptionDisenchantTarget = rrilOptionDisenchantTarget or ""
+	rrilOptionDisenchantThreshold = rrilOptionDisenchantThreshold or 2
 	LootDataTimestamp = LootDataTimestamp or "0000-00-00 00:00:00"
 
 	RRIncLoot_AddonName = GetAddOnMetadata("RRIncLoot", "Title")	

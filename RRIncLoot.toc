@@ -4,7 +4,7 @@
 ## Notes: Addon for RR Inc on EU-ZandalarTribe. By |cFF6600CCPug|r.
 ## Author: |cFF6600CCPug|r
 ## DefaultState: enabled
-## SavedVariables: rrilOptionUseWhispers, rrilOptionUseAddonChannel, rrilOptionUseAutoloot, rrilOptionAutolootTarget, rrilOptionCountdown, rrilOptionGiveLootToWinner, LootHistory, LootDataTimestamp, LootData
+## SavedVariables: rrilOptionUseWhispers, rrilOptionUseAddonChannel, rrilOptionUseAutoloot, rrilOptionAutolootTarget, rrilOptionAnnounceLoot, rrilOptionCountdown, rrilOptionGiveLootToWinner, rrilOptionDisenchant, rrilOptionDisenchantTarget, rrilOptionDisenchantThreshold, LootHistory, LootDataTimestamp, LootData
 
 Libraries\Load_Libraries.xml
 
@@ -17,4 +17,5 @@ RRIncLoot_History.lua
 RRIncLoot_Tooltip.lua
 RRIncLoot_FFARoll.lua
 RRIncLoot_LootDistribution.lua
+RRIncLoot_AnnounceLoot.lua
 RRIncLoot_Autoloot.lua
