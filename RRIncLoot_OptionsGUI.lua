@@ -238,7 +238,7 @@ local rrinclootOptionsTable =
             {
                 outputWon = 
                 {
-                    name = "History Won Output",
+                    name = "Accepted/Won",
                     desc = "History won output",
                     order = 1,
                     type = "input",
@@ -263,7 +263,7 @@ local rrinclootOptionsTable =
                 },
                 outputLost = 
                 {
-                    name = "History Lost Output",
+                    name = "Passed/Lost",
                     desc = "History lost output",
                     order = 2,
                     type = "input",
@@ -273,17 +273,17 @@ local rrinclootOptionsTable =
                         print("You can't set this value.")
                     end,
                     get = function(info) 
-                        local historyWon = ""
+                        local historyLost = ""
                         for i = 1, #LootHistory do
                             if string.find(LootHistory[i], "passed") or string.find(LootHistory[i], "lost roll for") then
                                 if i == 1 then
-                                    historyWon = LootHistory[i]
+                                    historyLost = LootHistory[i]
                                 else
-                                    historyWon = historyWon.."\n"..LootHistory[i]
+                                    historyLost = historyLost.."\n"..LootHistory[i]
                                 end
                             end
                         end
-                        return historyWon  
+                        return historyLost  
                     end
                 },
                 optionResetOptions = 
