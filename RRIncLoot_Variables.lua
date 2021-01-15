@@ -1,13 +1,3 @@
-
-RRIncLoot_Settings = {
-	-- whispers = true,
-	-- autoloot = true,
-	-- trashAssignee = "",
-	-- countdownMax = 10
-	-- useAddonChannel = true
-	-- giveLootPrompt = true
-}
-
 RRIncPrompt_AddonChannel = "RRIncPrompt"
 
 RRIncLoot_AddonName = "|cFF323232RR|r|cFF7F7F7FInc|r |cFF6B0B0BLoot|r"
@@ -24,35 +14,6 @@ positiveHistoryText = "won or accepted"
 function TESTGLOBAL()
 	print("You found me!")
 end
--- local function SetCountdownMax(value)
--- 	local number = tonumber (number)
--- 	if(value ~= nil or value ~= "") then
--- 		RRIncLoot_Settings.countdownMax = value;
--- 		print(RRIncLoot_MessagePrefix.."Counting down from " .. RRIncLoot_Settings.countdownMax);
--- 	else
--- 		print(RRIncLoot_MessagePrefix.."Supply a value for cooldown: /lcfg cd [value]")
--- 	end
-    
--- end
-
--- function RRIncLoot_ToggleAutoloot()
--- 	if(RRIncLoot_Settings.autoloot) then
--- 		RRIncLoot_Settings.autoloot = false
--- 		print(RRIncLoot_MessagePrefix.."Autoloot off.")
--- 	else
--- 		RRIncLoot_Settings.autoloot = true
--- 		print(RRIncLoot_MessagePrefix.."Autoloot on.")
--- 	end    
--- end
-
--- local function SetTrashAssignee(name)
--- 	if(name ~= nil or name ~= "") then
--- 		RRIncLoot_Settings.trashAssignee = name
--- 		print(RRIncLoot_MessagePrefix.."Trash will be given to "..name..".")
--- 	else
--- 		print(RRIncLoot_MessagePrefix.."Supply a name for trash assignee: /lcfg trash [name]")
--- 	end
--- end
 
 local function ListTrashLoot()
 	print(RRIncLoot_MessagePrefix.."Trash list:")
@@ -71,38 +32,7 @@ local function LoadLootData()
 	print(RRIncLoot_MessagePrefix.."Loaded data from import with timestamp \"|cFF00B200"..LootDataTimestamp.."|r\".")
 end
 
--- local function ResetSettings()
--- 	rrilOptionCountdown = 5
--- 	rrilOptionUseAutoloot = false
--- 	rrilOptionAutolootTarget = ""
--- 	rrilOptionUseWhispers = true
--- 	rrilOptionUseAddonChannel = true
--- 	LootDataTimestamp = "0000-00-00 00:00:00"
--- 	ReloadUI()
--- end
-
--- local function ResetSettingsPrompt()
--- 	StaticPopupDialogs["RRIncLoot_ResetSettingsPrompt"] = {
--- 		text = "Are you sure you want to reset the settings?\nThis will reload your UI!",
--- 		button1 = "Yes",
--- 		button2 = "No",
--- 		OnAccept = function()
--- 			ResetSettings()
--- 		end,
--- 		OnCancel = function()
--- 			print(RRIncLoot_MessagePrefix.."Did not reset settings.")
--- 		end,
--- 		timeout = 0,
--- 		whileDead = true,
--- 		hideOnEscape = true,
--- 		preferredIndex = 3,  -- avoid some UI taint, see http://www.wowace.com/announcements/how-to-avoid-some-ui-taint/
--- 	}
-
--- 	StaticPopup_Show("RRIncLoot_ResetSettingsPrompt")
--- end
-
--- Loot Config
-
+-- Config
 SLASH_RRINCLOOTOPTIONS1 = '/rrincloot'
 SLASH_RRINCLOOTOPTIONS2 = '/rril'
 function SlashCmdList.RRINCLOOTOPTIONS(msg)

@@ -42,14 +42,3 @@ function SlashCmdList.RRINCLOOTHISTORY(msg)
 	if(msg == "add") then
 	end
 end
-
-
--- function InitializeLootHistory()
--- 	local counter = 0
--- 	for i = 1, #LootHistory do
--- 		counter = counter + 1
--- 	end
--- 	if(counter == 0) then
--- 		LootHistory = {}
--- 	end
--- end

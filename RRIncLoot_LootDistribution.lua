@@ -94,12 +94,6 @@ local function SetupLootDistribution(item)
 	end
 
 	LootDistribution.ranking = GetRankingString(LootData[itemName])
-
-	-- print(LootDistribution.ranking)
-
-	-- -- Output info about item. TODO: Make this raid message.
-	-- print("Item:", LootDistribution.item)
-	-- print("Loot ranking:", LootDistribution.ranking)
 	
 	-- Split ranking into array and loop through, adding each to correct level as we go.
 	local RankingArray = LootData[itemName]
