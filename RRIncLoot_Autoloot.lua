@@ -10,7 +10,7 @@ FrameAutolootOpen:RegisterEvent("LOOT_OPENED")
 FrameAutolootOpen:SetScript("OnEvent", function(self, event, ...)
 	-- print("even fired")
 	RRIncLoot_LootOpen = true
-	
+
 	if not rrilOptionUseAutoloot then
 		-- print("Autoloot disabled.")
 		return
@@ -34,17 +34,29 @@ FrameAutolootOpen:SetScript("OnEvent", function(self, event, ...)
 	--  print("Num loot:", AmountOfLoot)		
 
 	for i=1, AmountOfLoot, 1 do
-		local lootIcon, lootName, lootQuantity, rarity, locked, isQuestItem, questId, isActive = GetLootSlotInfo(i)
+		local lootIcon, lootName, lootQuantity, currencyID, lootQuality, locked, isQuestItem, questID, isActive = GetLootSlotInfo(i)
 		local itemLink = GetLootSlotLink(i)
 		
-		if RRIncLoot_LootCanBeAutolooted(lootName) then
-			local members = GetNumGroupMembers()
-			
+		local members = GetNumGroupMembers()
+		if RRIncLoot_LootCanBeAutolooted(lootName) then	
 			for j=1, members, 1 do				
 				local candidate = GetMasterLootCandidate(i, j);
 				if(candidate == rrilOptionAutolootTarget) then
 					print(RRIncLoot_MessagePrefix.."Trash detected, giving "..itemLink.." to "..candidate..".")
 					GiveMasterLoot(i, j);
+					break
+				end
+			end
+		else
+			if rrilOptionDisenchant and IsEquippableItem(itemLink) and (lootQuality >= 2 and lootQuality <= rrilOptionDisenchantThreshold) then
+				print(RRIncLoot_MessagePrefix.."Diesnchant detected!")
+				for j=1, members, 1 do				
+					local candidate = GetMasterLootCandidate(i, j);
+					if(candidate == rrilOptionDisenchantTarget) then
+						print(RRIncLoot_MessagePrefix.."Disenchant detected, giving "..itemLink.." to "..candidate..".")
+						GiveMasterLoot(i, j);
+						break
+					end
 				end
 			end
 		end
