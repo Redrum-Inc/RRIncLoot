@@ -25,7 +25,7 @@ FrameAutolootOpen:SetScript("OnEvent", function(self, event, ...)
 		local playerName = select(1, UnitName("player"))
 		if rosterName ~= playerName then
 			print(RRIncLoot_MessagePrefix.."You are not the masterlooter, disabling autoloot.")
-			RRIncLoot_ToggleAutoloot()
+			rrilOptionUseAutoloot = false
 			return
 		end
 	end	
