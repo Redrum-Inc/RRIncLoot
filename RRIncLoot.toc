@@ -1,5 +1,5 @@
 ## Interface: 11306
-## Version: 5
+## Version: 6
 ## Title: |cFF323232RR|r|cFF7F7F7FInc|r |cFF6B0B0BLoot|r
 ## Notes: Addon for RR Inc on EU-ZandalarTribe. By |cFF6600CCPug|r.
 ## Author: |cFF6600CCPug|r
@@ -9,13 +9,11 @@
 
 Libraries\Load_Libraries.xml
 
-# IMPORTDATA.lua
 AUTOLOOTDATA.lua
 RRIncLoot_OptionsGUI.lua
 RRIncLoot_Variables.lua
 RRIncLoot_Shared.lua
 RRIncLoot_History.lua
-# RRIncLoot_Tooltip.lua
 RRIncLoot_FFARoll.lua
 RRIncLoot_LootDistribution.lua
 RRIncLoot_AnnounceLoot.lua
