@@ -16,7 +16,6 @@ local function ResetSettings()
 	rrilOptionAutolootTarget = ""
 	rrilOptionUseWhispers = true
 	rrilOptionUseAddonChannel = true
-	LootDataTimestamp = "0000-00-00 00:00:00"
 	ReloadUI()
 end
 

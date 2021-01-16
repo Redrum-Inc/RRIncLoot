@@ -62,16 +62,16 @@ local function RemoveLocalRanking(item, name, rank)
 	local itemName = select(1, GetItemInfo(item))
 	local targetIndex = 0
 
-	for i=1, #LootData[itemName] do
-		-- print(LootData[itemName][i].name, LootData[itemName][i].ranking, " | ", name, rank)
-		if LootData[itemName][i].name == name and LootData[itemName][i].ranking == rank then
+	for i=1, #RRIncData_Loot[itemName] do
+		-- print(RRIncData_Loot[itemName][i].name, RRIncData_Loot[itemName][i].ranking, " | ", name, rank)
+		if RRIncData_Loot[itemName][i].name == name and RRIncData_Loot[itemName][i].ranking == rank then
 			targetIndex = i
 			
 		end
 	end	
 
 	if targetIndex > 0 then
-		table.remove(LootData[itemName], targetIndex) 
+		table.remove(RRIncData_Loot[itemName], targetIndex) 
 		print(RRIncLoot_MessagePrefix.."Removed "..name.." with rank "..rank.." from local loot data. This will not affect the sheets!")
 	else
 		print(RRIncLoot_MessagePrefix.."ERROR! RemoveLocalRanking cannot find target index!")
@@ -83,20 +83,20 @@ local function SetupLootDistribution(item)
 	LootDistribution.item = item
 	local itemName = select(1, GetItemInfo(item))
 
-	if LootData[itemName] == nil then
+	if RRIncData_Loot[itemName] == nil then
 		RRIncLoot_StartFFARoll(item, true)
 		return false	
 	end
 
-	if next(LootData[itemName]) == nil then
+	if next(RRIncData_Loot[itemName]) == nil then
 		RRIncLoot_StartFFARoll(item, true)
 		return false
 	end
 
-	LootDistribution.ranking = GetRankingString(LootData[itemName])
+	LootDistribution.ranking = GetRankingString(RRIncData_Loot[itemName])
 	
 	-- Split ranking into array and loop through, adding each to correct level as we go.
-	local RankingArray = LootData[itemName]
+	local RankingArray = RRIncData_Loot[itemName]
 	for i = 1, #RankingArray do
 		
 		local name = RankingArray[i].name
@@ -149,7 +149,7 @@ local function AnnounceLoot()
 	-- print("Distributing:", LootDistribution.item)
 	-- print("Current ranking:", LootDistribution.ranking)
 	SendChatMessage("Distributing: "..LootDistribution.item,"RAID","COMMON");
-	SendChatMessage("Ranking ("..LootDataTimestamp.."): "..LootDistribution.ranking:sub(0,200),"RAID","COMMON"); -- Added substring to prevent 
+	SendChatMessage("Ranking ("..RRIncData_LootTimestamp.."): "..LootDistribution.ranking:sub(0,200),"RAID","COMMON"); -- Added substring to prevent 
 	SendChatMessage(LootDistribution.item,"RAID_WARNING","COMMON");	
 end
 

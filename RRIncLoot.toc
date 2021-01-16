@@ -3,12 +3,13 @@
 ## Title: |cFF323232RR|r|cFF7F7F7FInc|r |cFF6B0B0BLoot|r
 ## Notes: Addon for RR Inc on EU-ZandalarTribe. By |cFF6600CCPug|r.
 ## Author: |cFF6600CCPug|r
+## Dependencies: RRIncData
 ## DefaultState: enabled
-## SavedVariables: rrilOptionUseWhispers, rrilOptionUseAddonChannel, rrilOptionUseAutoloot, rrilOptionAutolootTarget, rrilOptionAnnounceLoot, rrilOptionCountdown, rrilOptionGiveLootToWinner, rrilOptionDisenchant, rrilOptionDisenchantTarget, rrilOptionDisenchantThreshold, LootHistory, LootDataTimestamp, LootData
+## SavedVariables: rrilOptionUseWhispers, rrilOptionUseAddonChannel, rrilOptionUseAutoloot, rrilOptionAutolootTarget, rrilOptionAnnounceLoot, rrilOptionCountdown, rrilOptionGiveLootToWinner, rrilOptionDisenchant, rrilOptionDisenchantTarget, rrilOptionDisenchantThreshold, LootHistory
 
 Libraries\Load_Libraries.xml
 
-IMPORTDATA.lua
+# IMPORTDATA.lua
 AUTOLOOTDATA.lua
 RRIncLoot_OptionsGUI.lua
 RRIncLoot_Variables.lua
