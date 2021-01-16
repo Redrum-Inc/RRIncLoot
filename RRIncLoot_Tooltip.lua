@@ -110,19 +110,19 @@ local function SetGameToolTipPrice(tt)
 	if itemLink then
 		itemName = select(1, GetItemInfo(itemLink))
 
-		if LootData[itemName] ~= nil then
-			if  next(LootData[itemName]) == nil then
+		if RRIncData_Loot[itemName] ~= nil then
+			if  next(RRIncData_Loot[itemName]) == nil then
 				return 
 			end
 			
-			local lootranking = FormatTooltipText(LootData[itemName])
+			local lootranking = FormatTooltipText(RRIncData_Loot[itemName])
 			tt:AddDoubleLine(" ","")
-			tt:AddDoubleLine("RRIncLoot:",GetCount(LootData[itemName]).." listed",0.6,0.1,0.1)
+			tt:AddDoubleLine("RRIncLoot:",GetCount(RRIncData_Loot[itemName]).." listed",0.6,0.1,0.1)
 
-			for i=1, #LootData[itemName] do
+			for i=1, #RRIncData_Loot[itemName] do
 				local r = 0 g = 0 b = 0
 				local r2 = 0 g2 = 0 b2 = 0
-				local class = GetClassFromGuildRoster(LootData[itemName][i].name)
+				local class = GetClassFromGuildRoster(RRIncData_Loot[itemName][i].name)
 
 				-- print(class)
 				if class == nil or class == "" then
@@ -131,7 +131,7 @@ local function SetGameToolTipPrice(tt)
 					r, g, b = GetClassColorInRGB(class)
 				end
 
-				tt:AddDoubleLine(LootData[itemName][i].name, LootData[itemName][i].ranking, r,g,b,r,g,b)
+				tt:AddDoubleLine(RRIncData_Loot[itemName][i].name, RRIncData_Loot[itemName][i].ranking, r,g,b,r,g,b)
 			end
 			-- tt:AddDoubleLine(lootranking)		
 		else 

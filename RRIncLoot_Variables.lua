@@ -3,17 +3,10 @@ RRIncPrompt_AddonChannel = "RRIncPrompt"
 RRIncLoot_AddonName = "|cFF323232RR|r|cFF7F7F7FInc|r |cFF6B0B0BLoot|r"
 RRIncLoot_MessagePrefix = RRIncLoot_AddonName..": "
 
--- Lock variable to prevent multiple distributions/rolls.
+-- Lock variables to prevent multiple distributions/rolls.
 RRIncLoot_LockVar = false
-
 RRIncLoot_LootOpen = false
 
-negativeHistoryText = "lost or passed"
-positiveHistoryText = "won or accepted"
-
-function TESTGLOBAL()
-	print("You found me!")
-end
 
 local function ListTrashLoot()
 	print(RRIncLoot_MessagePrefix.."Trash list:")
@@ -24,12 +17,6 @@ local function ListTrashLoot()
 		end
 	end
 	print("---------------")
-end
-
-local function LoadLootData()
-	LootData = ImportedData		
-	LootDataTimestamp = ImportedDataTimestamp
-	print(RRIncLoot_MessagePrefix.."Loaded data from import with timestamp \"|cFF00B200"..LootDataTimestamp.."|r\".")
 end
 
 -- Config
@@ -59,7 +46,6 @@ local function EventEnterWorld(self, event, isLogin, isReload)
 	rrilOptionDisenchant = rrilOptionDisenchant or true
 	rrilOptionDisenchantTarget = rrilOptionDisenchantTarget or ""
 	rrilOptionDisenchantThreshold = rrilOptionDisenchantThreshold or 2
-	LootDataTimestamp = LootDataTimestamp or "0000-00-00 00:00:00"
 
 	RRIncLoot_AddonName = GetAddOnMetadata("RRIncLoot", "Title")	
 	RRIncLoot_MessagePrefix = RRIncLoot_AddonName..": "
@@ -70,12 +56,6 @@ local function EventEnterWorld(self, event, isLogin, isReload)
 	end
 
 	if isLogin or isReload then
-		if LootDataTimestamp ~= ImportedDataTimestamp then
-				C_Timer.After(3, function() print(RRIncLoot_MessagePrefix.."|cFFFF0000LootData timestamp \""..LootDataTimestamp.."\" differs from imported timestamp \""..ImportedDataTimestamp.."\"!|r") end)
-				C_Timer.After(4, function() LoadLootData() end)
-		else
-			C_Timer.After(3, function() print(RRIncLoot_MessagePrefix.."Using LootData with timestamp \""..LootDataTimestamp.."\".") end)
-		end
 	end
 
 	local successfulRequest = C_ChatInfo.RegisterAddonMessagePrefix(RRIncPrompt_AddonChannel)
