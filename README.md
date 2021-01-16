@@ -36,7 +36,7 @@ Removes all history, recommended to do after each raid when data have been poste
 ---
 
 ## Installation (for easy updates)
-1. Download and install [Git](https://git-scm.com/download/win) for Windows (don't worry about settings, just click through installer).
+~~1. Download and install [Git](https://git-scm.com/download/win) for Windows (don't worry about settings, just click through installer).~~
 2. Download [RRIncLoot.zip](https://github.com/bo12s/RRIncLoot/releases) and extract to WoW Classic Addons folder:
 
 ![release image](https://i.imgur.com/qzhRB9c.png)
