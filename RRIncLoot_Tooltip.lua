@@ -8,7 +8,7 @@ local function FormatTooltipText(array)
 	local firstRank = true
 	local text = ""
 	local counter = 0
-	-- text = text:gsub(",", ", ")
+	
 	for i=1, #array do
 		if firstRank then
 			text = array[i].name.." "..array[i].ranking

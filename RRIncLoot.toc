@@ -15,7 +15,7 @@ RRIncLoot_OptionsGUI.lua
 RRIncLoot_Variables.lua
 RRIncLoot_Shared.lua
 RRIncLoot_History.lua
-RRIncLoot_Tooltip.lua
+# RRIncLoot_Tooltip.lua
 RRIncLoot_FFARoll.lua
 RRIncLoot_LootDistribution.lua
 RRIncLoot_AnnounceLoot.lua
