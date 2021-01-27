@@ -1,11 +1,16 @@
-$addonName = "RRIncData"
+$addonName = "RRIncLoot"
 
 New-Item -ItemType Directory -Force -Path .\$addonName\
-Copy-Item .\$addonName.lua -Destination .\$addonName\ 
-Copy-Item .\$addonName.toc -Destination .\$addonName\ 
-Copy-Item .\RRIncData_Options.lua -Destination .\$addonName\ 
-Copy-Item .\LOOT.lua -Destination .\$addonName\ 
-Copy-Item .\Libraries -Recurse -Destination .\$addonName\ 
+
+$files = Get-ChildItem .\* -Include *.lua, *.toc, *.xml
+
+foreach ($file in $files) {
+   Copy-Item $file -Destination .\$addonName\ 
+}
+
+if ( Test-Path -Path '.\Libraries' -PathType Container ) { 
+    Copy-Item .\Libraries -Destination .\$addonName\  -Recurse
+}
 
 $version = ""
 
