@@ -1,4 +1,4 @@
-local lootQualityThreshhold = 2
+local lootQualityThreshhold = 4
 
 -- Event for looting.
 local FrameAnnounceLootOpen = CreateFrame("Frame")
